@@ -316,18 +316,11 @@
       </classpath>
       <formatter type="plain"/>
       <test name="java112.tests.DriverTest"/>
-      <test name="java112.tests.FileAnalysisTest"/>
-      <test name="java112.tests.FileSummaryAnalyzerTest"/>
-      <test name="java112.tests.FileSummaryAnalyzerOutputTest"/>
-      <test name="java112.tests.DistinctTokensAnalyzerProcessTokenTest"/>
-      <test name="java112.tests.DistinctTokensAnalyzerOutputTest"/>
-<!--
-
-
-
-
- -->    </junit>
+      <test name="java112.tests.WordCounterTest"/>
+      <test name="java112.tests.WordCollectionNextWordTest"/>
+      <test name="java112.tests.WordCollectionOutputTest"/>
+      <test name="java112.tests.ReportNextWordTest"/>
+      <test name="java112.tests.ReportOutputTest"/>
+    </junit>
   </target>
-
-
 </project>
