@@ -25,6 +25,7 @@
   <property name="junit" value="${project_home}/lib/junit.jar" />
   <property name="hamcrest" value="${project_home}/lib/hamcrest.jar" />
   <property name="java_hamcrest" value="${project_home}/lib/java-hamcrest.jar" />
+  <property name="lab_tests_src" value="${project_home}/src/java112/tests" />
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -179,8 +180,7 @@
   </target>
 
 <!--  Testing Targets -->
-
-  <target name="build_tests" depends="clean, compile_tests">
+  <target name="build_tests" depends="clean, compile_tests, test_dir_check" if="test_dir_exists">
     <jar destfile="lib/java112Tests.jar">
       <fileset dir="${build}/classes"
                excludes="java112/analyzer/**,
@@ -322,5 +322,11 @@
       <test name="java112.tests.ReportNextWordTest"/>
       <test name="java112.tests.ReportOutputTest"/>
     </junit>
+  </target>
+
+  <target name="test_dir_check">
+    <condition property="test_dir_exists">
+      <available file="${lab_tests_src}" type="dir"/>
+    </condition>
   </target>
 </project>
