@@ -5,7 +5,7 @@ public class LabThree
 
     public void run(String input)
     {
-            System.out.println("input: test");
+            System.out.println("input: " + input);
     }
 
     public static void main(String[] args)
@@ -18,7 +18,7 @@ public class LabThree
         }
         else
         {
-            output.run("some string");
+            output.run(args[0]);
         }
     }
 }
