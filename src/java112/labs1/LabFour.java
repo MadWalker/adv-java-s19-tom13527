@@ -1,5 +1,5 @@
 package java112.labs1;
-import java.util.*;
+import java.io.*;
 
 public class LabFour
 {
@@ -10,7 +10,7 @@ public class LabFour
 
         try
         {
-            inputReader = new BufferedReader(new FileReader(args));
+            inputReader = new BufferedReader(new FileReader(input));
 
             // Code to process the input file
             // Declare a String variable to hold the current line
@@ -26,27 +26,28 @@ public class LabFour
                 // This will usually be in another method that we
                 // pass the line to
             }
-    }
-    catch (FileNotFoundException fileNotFound)
-    {
-        fileNotFound.printStackTrace();
-    }
-    catch (IOException ioExcetion)
-    {
-        ioException.printStackTrace();
-    }
-    finally
-    {
-        try
-        {
-            if (inputReader != null)
-            {
-                inputReader.close();
-            }
         }
-        catch (Exception exception)
+        catch (FileNotFoundException fileNotFound)
         {
-            exception.printStackTrace();
+            fileNotFound.printStackTrace();
+        }
+        catch (IOException ioException)
+        {
+            ioException.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                if (inputReader != null)
+                {
+                    inputReader.close();
+                }
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
         }
     }
 
@@ -57,7 +58,6 @@ public class LabFour
         if (args.length != 1)
         {
             System.out.println("Please enter one argument on the command line");
-            break;
         }
         else
         {
