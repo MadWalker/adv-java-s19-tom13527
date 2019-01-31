@@ -21,6 +21,7 @@ public class WriteDemo
         try
         {
             // Instantiate file and write to it
+            // * WILL WRITE BRAND NEW FILE EVERY TIME
             writer = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")));
             writer.println("A first line in new file");
             writer.println("A second line in new file");
