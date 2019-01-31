@@ -25,6 +25,7 @@ public class LabFour
                 // Now Process the line in some way
                 // This will usually be in another method that we
                 // pass the line to
+                System.out.println(line);
             }
         }
         catch (FileNotFoundException fileNotFound)
