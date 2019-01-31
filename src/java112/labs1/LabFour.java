@@ -17,6 +17,7 @@ public class LabFour
 
             String line = null;
 
+            // Read the file
             while (inputReader.ready())
             {
                 // Read each line in here
@@ -28,14 +29,17 @@ public class LabFour
                 System.out.println(line);
             }
         }
+        // Creating an exception object for if the file is not found
         catch (FileNotFoundException fileNotFound)
         {
             fileNotFound.printStackTrace();
         }
+        // Creating an exception if file cannot be read
         catch (IOException ioException)
         {
             ioException.printStackTrace();
         }
+        // Close the resource back up
         finally
         {
             try
@@ -45,6 +49,8 @@ public class LabFour
                     inputReader.close();
                 }
             }
+            // Catches everything else if the first 2 expceptions are not caught
+            // File was found and read, but something else happened
             catch (Exception exception)
             {
                 exception.printStackTrace();
