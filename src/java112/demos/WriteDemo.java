@@ -20,7 +20,10 @@ public class WriteDemo
         // Need to check permissions to write and such
         try
         {
+            // Instantiate file and write to it
             writer = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")));
+            writer.println("A first line in new file");
+            writer.println("A second line in new file");
         }
         // Catch your permission to wrtie file
         catch (IOException iOException)
@@ -33,6 +36,13 @@ public class WriteDemo
         {
             System.out.println("There was a problem...");
             exception.printStackTrace();
+        }
+        finally
+        {
+            if (writer != null)
+            {
+                writer.close();
+            }
         }
     }
 }
