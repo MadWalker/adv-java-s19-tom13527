@@ -4,7 +4,7 @@
     @author Tom Good
 */
 
-package java112.demos;
+package java112.labs1;
 import java.io.*;
 
 public class LabFive
@@ -50,16 +50,16 @@ public class LabFive
     */
     public static void main(String[] args)
     {
-        LabFive labFive = new labFive();
+        LabFive labFive = new LabFive();
 
         if (args.length != 2)
         {
-            System.out.println("Please enter two arguments on the command line,
-                    a file name and a message")
+            System.out.println("Please enter two arguments on the command line, "
+                    + "a file name and a message");
         }
         else
         {
-            labFive.run(args[0,1]);
+            labFive.run(args[0], args[1]);
         }
     }
 

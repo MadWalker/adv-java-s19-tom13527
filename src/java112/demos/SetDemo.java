@@ -49,9 +49,6 @@ public class SetDemo
     */
     public static void main(String[] args)
     {
-        SetDemo demo = new SetDemo()
-        {
-
-        }
+        SetDemo demo = new SetDemo();
     }
 }
