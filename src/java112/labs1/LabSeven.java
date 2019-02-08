@@ -27,7 +27,7 @@ public class LabSeven
         listOfStrings.add("nine");
         listOfStrings.add("ten");
 
-        writeListToOutputFile(outputName);
+        //writeListToOutputFile(outputName);
     }
 
     public void writeListToOutputFile(String outputName)
@@ -39,7 +39,7 @@ public class LabSeven
             // Instantiate file and write to it
             // * WILL WRITE BRAND NEW FILE EVERY TIME
             writer = new PrintWriter(new BufferedWriter(new FileWriter(outputName)));
-            writer.println(message);
+            //writer.println(message);
         }
         // Catch your permission to wrtie file
         catch (IOException iOException)
