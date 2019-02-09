@@ -1,44 +1,41 @@
 /**
-    This program takes an array list and outputs it into a file with
-    each element of the array list having its own line
+    This program will create a tree set and output it to a FILE
 
     @author Tom Good
 */
-
 package java112.labs1;
 import java.io.*;
 import java.util.*;
 
-public class LabSeven
+public class LabEight
 {
-    // Instantiate arraylist
-    public ArrayList<String> listOfStrings;
-
-    // Description
-    public void run(String outputFilePath)
-    {
-        listOfStrings = new ArrayList();
-
-        listOfStrings.add("one");
-        listOfStrings.add("two");
-        listOfStrings.add("three");
-        listOfStrings.add("four");
-        listOfStrings.add("five");
-        listOfStrings.add("six");
-        listOfStrings.add("seven");
-        listOfStrings.add("eight");
-        listOfStrings.add("nine");
-        listOfStrings.add("ten");
-
-        this.writeListToOutputFile(outputFilePath);
-    }
+    // Create instance variable
+    public Set<String> sortedSetOfStrings;
 
     /**
-        Description
+        Create the set
 
-        @param outputName
+        @param outputFilePath
     */
-    public void writeListToOutputFile(String outputName)
+    public void run(String outputFilePath)
+    {
+        sortedSetOfStrings = new TreeSet();
+
+        sortedSetOfStrings.add("one");
+        sortedSetOfStrings.add("one");
+        sortedSetOfStrings.add("five");
+        sortedSetOfStrings.add("two");
+        sortedSetOfStrings.add("four");
+        sortedSetOfStrings.add("two");
+        sortedSetOfStrings.add("three");
+        sortedSetOfStrings.add("three");
+        sortedSetOfStrings.add("four");
+        sortedSetOfStrings.add("three");
+
+        this.writeSetToOutputFile(outputFilePath);
+    }
+
+    public void writeSetToOutputFile(String outputName)
     {
         PrintWriter writer = null;
         // Need to check permissions to write and such
@@ -48,8 +45,8 @@ public class LabSeven
             // * WILL WRITE BRAND NEW FILE EVERY TIME
             writer = new PrintWriter(new BufferedWriter(new FileWriter(outputName)));
 
-            for (String list : listOfStrings)
-                writer.println(list);
+            for (String set : sortedSetOfStrings)
+                writer.println(set);
         }
         // Catch your permission to wrtie file
         catch (IOException iOException)
@@ -73,7 +70,7 @@ public class LabSeven
     }
 
     /**
-        Main method
+        Main method of lab eight class
 
         @param args command line arguements
     */
@@ -81,13 +78,13 @@ public class LabSeven
     {
         if (args.length != 1)
         {
-            System.out.println("Please enter one argument on the command line, "
+            System.out.println("Please enter one argument on the command line, " 
             + "an output file name");
         }
         else
         {
-            LabSeven labSeven = new LabSeven();
-            labSeven.run(args[0]);
+            LabEight labEight = new LabEight();
+            labEight.run(args[0]);
         }
     }
 }
