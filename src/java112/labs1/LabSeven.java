@@ -1,5 +1,5 @@
 /**
-
+    Description
 
     @author Tom Good
 */
@@ -10,11 +10,13 @@ import java.util.*;
 
 public class LabSeven
 {
+    // Instantiate arraylist
     public ArrayList<String> listOfStrings;
 
-    public void run()
+    // Description
+    public void run(String outputFilePath)
     {
-        ArrayList listOfStrings = new ArrayList();
+        listOfStrings = new ArrayList();
 
         listOfStrings.add("one");
         listOfStrings.add("two");
@@ -27,9 +29,14 @@ public class LabSeven
         listOfStrings.add("nine");
         listOfStrings.add("ten");
 
-        //writeListToOutputFile(outputName);
+        this.writeListToOutputFile(outputFilePath);
     }
 
+    /**
+        Description
+
+        @param outputName
+    */
     public void writeListToOutputFile(String outputName)
     {
         PrintWriter writer = null;
@@ -39,7 +46,9 @@ public class LabSeven
             // Instantiate file and write to it
             // * WILL WRITE BRAND NEW FILE EVERY TIME
             writer = new PrintWriter(new BufferedWriter(new FileWriter(outputName)));
-            //writer.println(message);
+
+            for (String list : listOfStrings)
+                writer.println(list);
         }
         // Catch your permission to wrtie file
         catch (IOException iOException)
@@ -77,7 +86,7 @@ public class LabSeven
         else
         {
             LabSeven labSeven = new LabSeven();
-            labSeven.run();
+            labSeven.run(args[0]);
         }
     }
 }
