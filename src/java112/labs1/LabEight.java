@@ -1,5 +1,6 @@
 /**
-    This program will create a tree set and output it to a FILE
+    This program will create a tree set and output it to a new file. Output will
+    be in order from first letter of alphabet to last, no repeated strings.
 
     @author Tom Good
 */
@@ -78,7 +79,7 @@ public class LabEight
     {
         if (args.length != 1)
         {
-            System.out.println("Please enter one argument on the command line, " 
+            System.out.println("Please enter one argument on the command line, "
             + "an output file name");
         }
         else
