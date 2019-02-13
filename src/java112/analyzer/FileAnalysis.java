@@ -9,7 +9,7 @@ import java.io.*;
 */
 public class FileAnalysis {
     // Declare constant
-    const COMMAND_LINE_ARGUEMENTS = 1;
+    static int COMMAND_LINE_ARGUEMENTS = 1;
     // Declare instance variables
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
@@ -23,7 +23,7 @@ public class FileAnalysis {
     public void analyz(String[] arguements) {
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
-            System.out.println("Please enter the name of the input file.")
+            System.out.println("Please enter the name of the input file.");
         } else {
             // instantiate instance variables
             summaryAnalyzer = new FileSummaryAnalyzer();

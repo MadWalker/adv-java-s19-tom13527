@@ -9,7 +9,7 @@ import java.util.*;
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     // Declare instance variable
-    private Set<String> distictTokens;
+    private Set<String> distinctTokens;
     // Get method
     public Set<String> getDistinctTokens() { return distinctTokens; }
     /**
@@ -19,17 +19,17 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         @param args String inputFilePath, String outputFilePath
     */
     public void generateOutputFile(String inputFilePath, String outputFilePath) {
-        distictTokens = new TreeSet();
+        distinctTokens = new TreeSet();
         try (
             BufferedReader input = new BufferedReader(new FileReader(inputFilePath));
-            PrintWriter outputFilePath = new PrintWriter(new BufferedWriter(new FileWriter("distinctTokens.txt")))
-        )
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
+        ) {
             while (input.ready()) {
                 // Add string to a treeset to sort distinct tokens
-                distictTokens.add(input.readLine());
+                distinctTokens.add(input.readLine());
                 // Loop through treeset and output distinct tokens to output file
-                for (String set : distictTokens) {
-                    outputFilePath.println(set);
+                for (String set : distinctTokens) {
+                    output.println(set);
                 }
             }
         }
@@ -45,5 +45,9 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         {
             exception.printStackTrace();
         }
+    }
+
+    public void processToken(String token) {
+
     }
 }
