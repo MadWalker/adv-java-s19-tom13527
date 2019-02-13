@@ -16,9 +16,34 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         This method will take in the inputed file and count/document the number
         of distinct tokens found within the text.
 
-        @param args String token
+        @param args String inputFilePath, String outputFilePath
     */
-    public void processToken(String token) {
-
+    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+        distictTokens = new TreeSet();
+        try (
+            BufferedReader input = new BufferedReader(new FileReader(inputFilePath));
+            PrintWriter outputFilePath = new PrintWriter(new BufferedWriter(new FileWriter("distinctTokens.txt")))
+        )
+            while (input.ready()) {
+                // Add string to a treeset to sort distinct tokens
+                distictTokens.add(input.readLine());
+                // Loop through treeset and output distinct tokens to output file
+                for (String set : distictTokens) {
+                    outputFilePath.println(set);
+                }
+            }
+        }
+        catch (FileNotFoundException fileNotFound)
+        {
+            fileNotFound.printStackTrace();
+        }
+        catch (IOException inputOutputException)
+        {
+            inputOutputException.printStackTrace();
+        }
+        catch (Exception exception)
+        {
+            exception.printStackTrace();
+        }
     }
 }
