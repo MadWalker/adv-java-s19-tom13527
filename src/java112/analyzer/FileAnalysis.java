@@ -9,7 +9,7 @@ import java.io.*;
 */
 public class FileAnalysis {
     // Declare constant
-    static int COMMAND_LINE_ARGUEMENTS = 1;
+    final int COMMAND_LINE_ARGUEMENTS = 1;
     // Declare instance variables
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
@@ -25,9 +25,65 @@ public class FileAnalysis {
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");
         } else {
-            // instantiate instance variables
-            summaryAnalyzer = new FileSummaryAnalyzer();
-            distinctAnalyzer = new DistinctTokensAnalyzer();
+            FileAnalysis fileAnalysis = new FileAnalysis();
+            fileAnalysis.createInstanceVariables();
+            fileAnalysis.openInputFile(arguements[0]);
+            fileAnalysis.generateTokens();
+            fileAnalysis.passGeneratedTokens();
+            fileAnalysis.writeOutputFiles();
         }
+    }
+    /**
+        Create instance variables for FileSummaryAnalyzer and DistinctTokensAnalyzer
+
+        @param args not used here
+    */
+    public void createInstanceVariables(){
+        // instantiate instance variables
+        summaryAnalyzer = new FileSummaryAnalyzer();
+        distinctAnalyzer = new DistinctTokensAnalyzer();
+    }
+    /**
+        This method will open the input file with a buffered reader
+
+        @param args String inputFilePath
+    */
+    public void openInputFile(String inputFilePath) {
+        try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
+            while (input.ready()) {
+                System.out.println(input.readLine());
+            }
+        } catch (FileNotFoundException fileNotFound) {
+            fileNotFound.printStackTrace();
+        } catch (IOException inputOutputException) {
+            inputOutputException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    /**
+        This method will loop through the lines of input and generate indivdual tokens
+
+        @param args not used
+    */
+    public void generateTokens() {
+
+    }
+    /**
+        This method will pass all the generated tokens to all of the Analyzer instances
+        via the processToken method
+
+        @param args
+    */
+    public void passGeneratedTokens() {
+
+    }
+    /**
+        This method will call the generateOutputFile methods of the Analyzer isntances
+
+        @param args
+    */
+    public void writeOutputFiles() {
+
     }
 }

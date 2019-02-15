@@ -12,6 +12,9 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private Set<String> distinctTokens;
     // Get method
     public Set<String> getDistinctTokens() { return distinctTokens; }
+    public void processToken(String token) {
+
+    }
     /**
         This method will take in the inputed file and count/document the number
         of distinct tokens found within the text.
@@ -45,9 +48,5 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         {
             exception.printStackTrace();
         }
-    }
-
-    public void processToken(String token) {
-
     }
 }
