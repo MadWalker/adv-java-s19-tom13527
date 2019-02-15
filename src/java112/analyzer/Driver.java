@@ -14,6 +14,6 @@ public class Driver {
     */
     public static void main(String[] args) {
         FileAnalysis fileAnalysis = new FileAnalysis();
-        fileAnalysis.analyze(args[0]);
+        //fileAnalysis.analyze(args[0]);
     }
 }

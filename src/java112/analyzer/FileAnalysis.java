@@ -20,7 +20,7 @@ public class FileAnalysis {
 
         @param args String[] arguements
     */
-    public void analyz(String[] arguements) {
+    public void analyze(String[] arguements) {
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");

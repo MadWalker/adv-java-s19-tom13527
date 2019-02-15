@@ -17,7 +17,11 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
 
         @param args not used here
     */
-    public void generateOutputFile() {
+    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+
+    }
+
+    public void processToken(String token) {
 
     }
 }
