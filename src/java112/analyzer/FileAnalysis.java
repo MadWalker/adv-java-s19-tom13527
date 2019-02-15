@@ -28,7 +28,6 @@ public class FileAnalysis {
             FileAnalysis fileAnalysis = new FileAnalysis();
             fileAnalysis.createInstanceVariables();
             fileAnalysis.openInputFile(arguements[0]);
-            fileAnalysis.generateTokens();
             fileAnalysis.passGeneratedTokens();
             fileAnalysis.writeOutputFiles();
         }
@@ -49,9 +48,11 @@ public class FileAnalysis {
         @param args String inputFilePath
     */
     public void openInputFile(String inputFilePath) {
+        FileAnalysis fileAnalysis = new FileAnalysis();
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
             while (input.ready()) {
-                System.out.println(input.readLine());
+                //input.readline());
+                // try https://stackoverflow.com/questions/18607418/how-to-split-the-strings-in-a-file-and-read-them
             }
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
@@ -64,10 +65,13 @@ public class FileAnalysis {
     /**
         This method will loop through the lines of input and generate indivdual tokens
 
-        @param args not used
+        @param args BufferedReader input
     */
     public void generateTokens() {
-
+        String[] splited =
+        for (String[] tokens) {
+            // https://stackoverflow.com/questions/18607418/how-to-split-the-strings-in-a-file-and-read-them
+        }
     }
     /**
         This method will pass all the generated tokens to all of the Analyzer instances
