@@ -1,5 +1,6 @@
 package java112.analyzer;
 import java.io.*;
+import java.util.*;
 /**
     This class will be the controller class for the analyzer project. It will
     call the methods found in the FileSummaryAnalyzer and DistinctTonkensAnalyzer.
@@ -21,13 +22,16 @@ public class FileAnalysis {
         @param args String[] arguements
     */
     public void analyze(String[] arguements) {
+        ArrayList<String> listOfTokens = new ArrayList();
+        String line = null;
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");
         } else {
             FileAnalysis fileAnalysis = new FileAnalysis();
             fileAnalysis.createInstanceVariables();
-            fileAnalysis.openInputFile(arguements[0]);
+            fileAnalysis.openInputFile(arguements[0], listOfTokens);
+            fileAnalysis.generateTokens(line, listOfTokens);
             fileAnalysis.passGeneratedTokens();
             fileAnalysis.writeOutputFiles();
         }
@@ -47,12 +51,12 @@ public class FileAnalysis {
 
         @param args String inputFilePath
     */
-    public void openInputFile(String inputFilePath) {
-        FileAnalysis fileAnalysis = new FileAnalysis();
+    public void openInputFile(String inputFilePath, ArrayList<String> listOfTokens) {
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
+            String line = null;
             while (input.ready()) {
-                //input.readline());
-                // try https://stackoverflow.com/questions/18607418/how-to-split-the-strings-in-a-file-and-read-them
+                line = input.readLine();
+                generateTokens(line, listOfTokens);
             }
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
@@ -67,10 +71,9 @@ public class FileAnalysis {
 
         @param args BufferedReader input
     */
-    public void generateTokens() {
-        String[] splited =
-        for (String[] tokens) {
-            // https://stackoverflow.com/questions/18607418/how-to-split-the-strings-in-a-file-and-read-them
+    public void generateTokens(String inputText, ArrayList<String> listOfTokens) {
+        for (String tokens : listOfTokens) {
+            tokens.add(inputText);
         }
     }
     /**
@@ -80,6 +83,7 @@ public class FileAnalysis {
         @param args
     */
     public void passGeneratedTokens() {
+        DistinctTokensAnalyzer passTokens = new DistinctTokensAnalyzer();
 
     }
     /**
