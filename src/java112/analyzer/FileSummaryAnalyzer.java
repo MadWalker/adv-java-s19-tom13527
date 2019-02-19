@@ -17,7 +17,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         ArrayList<String> listOfTokens = new ArrayList();;
         listOfTokens.add(token);
         for (String list : listOfTokens) {
-            totalTokensCount ++;
+            totalTokensCount += 1;
         }
     }
     /**
@@ -32,19 +32,16 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-            while (input.ready())
-            {
                 System.out.println("Application: File Magic\n");
                 System.out.println("Author: Tom Good\n");
                 System.out.println("Author Email: good@madisoncollege.edu\n");
                 System.out.println("Author: Tom Good\n");
-                System.out.println("File: " + input + "\n");
+                System.out.println("File: " + inputFilePath + "\n");
                 System.out.println("Date of Analysis: \n");
                 System.out.println("Last Modified : \n");
                 System.out.println("File Size: \n");
                 System.out.println("File URI: \n");
                 System.out.println("Total Tokens: " + totalTokensCount + "\n");
-            }
         }
             catch (FileNotFoundException fileNotFound)
             {

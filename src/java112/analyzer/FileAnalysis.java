@@ -22,7 +22,7 @@ public class FileAnalysis {
         @param args String[] arguements
     */
     public void analyze(String[] arguements) {
-        String inputText = null;
+        String inputText = "";
         String outputFilePath = "summary.txt";
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
