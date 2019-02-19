@@ -22,18 +22,18 @@ public class FileAnalysis {
         @param args String[] arguements
     */
     public void analyze(String[] arguements) {
-        ArrayList<String> listOfTokens = new ArrayList();
-        String line = null;
+        String inputText = null;
+        String outputFilePath = "summary.txt";
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");
         } else {
             FileAnalysis fileAnalysis = new FileAnalysis();
             fileAnalysis.createInstanceVariables();
-            fileAnalysis.openInputFile(arguements[0], listOfTokens);
-            fileAnalysis.generateTokens(line, listOfTokens);
-            fileAnalysis.passGeneratedTokens();
-            fileAnalysis.writeOutputFiles();
+            fileAnalysis.openInputFile(arguements[0], inputText);
+            fileAnalysis.generateTokens(inputText);
+            fileAnalysis.passGeneratedTokens(inputText);
+            fileAnalysis.writeOutputFiles(arguements[0], outputFilePath);
         }
     }
     /**
@@ -41,7 +41,7 @@ public class FileAnalysis {
 
         @param args not used here
     */
-    public void createInstanceVariables(){
+    public void createInstanceVariables() {
         // instantiate instance variables
         summaryAnalyzer = new FileSummaryAnalyzer();
         distinctAnalyzer = new DistinctTokensAnalyzer();
@@ -51,12 +51,11 @@ public class FileAnalysis {
 
         @param args String inputFilePath
     */
-    public void openInputFile(String inputFilePath, ArrayList<String> listOfTokens) {
+    public void openInputFile(String inputFilePath, String inputText) {
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
-            String line = null;
             while (input.ready()) {
-                line = input.readLine();
-                generateTokens(line, listOfTokens);
+                inputText = input.readLine();
+                generateTokens(inputText);
             }
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
@@ -71,9 +70,10 @@ public class FileAnalysis {
 
         @param args BufferedReader input
     */
-    public void generateTokens(String inputText, ArrayList<String> listOfTokens) {
-        for (String tokens : listOfTokens) {
-            tokens.add(inputText);
+    public void generateTokens(String tokens) {
+        String[] tokenArray = tokens.split("\\W+");
+        for (String token :tokenArray) {
+            passGeneratedTokens(token);
         }
     }
     /**
@@ -82,16 +82,20 @@ public class FileAnalysis {
 
         @param args
     */
-    public void passGeneratedTokens() {
-        DistinctTokensAnalyzer passTokens = new DistinctTokensAnalyzer();
-
+    public void passGeneratedTokens(String tokens) {
+        FileAnalysis fileAnalysis = new FileAnalysis();
+        fileAnalysis.createInstanceVariables();
+        summaryAnalyzer.processToken(tokens);
+        distinctAnalyzer.processToken(tokens);
     }
     /**
         This method will call the generateOutputFile methods of the Analyzer isntances
 
         @param args
     */
-    public void writeOutputFiles() {
-
+    public void writeOutputFiles(String inputFilePath, String outputFilePath) {
+        FileAnalysis fileAnalysis = new FileAnalysis();
+        fileAnalysis.createInstanceVariables();
+        summaryAnalyzer.generateOutputFile(inputFilePath, outputFilePath);
     }
 }
