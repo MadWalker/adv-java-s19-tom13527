@@ -14,7 +14,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     public int getTotalTokensCount() { return totalTokensCount; }
 
     public void processToken(String token) {
-        ArrayList<String> listOfTokens = new ArrayList();;
+        ArrayList<String> listOfTokens = new ArrayList();
         listOfTokens.add(token);
         for (String list : listOfTokens) {
             totalTokensCount += 1;
@@ -32,16 +32,16 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-                System.out.println("Application: File Magic\n");
-                System.out.println("Author: Tom Good\n");
-                System.out.println("Author Email: good@madisoncollege.edu\n");
-                System.out.println("Author: Tom Good\n");
-                System.out.println("File: " + inputFilePath + "\n");
-                System.out.println("Date of Analysis: \n");
-                System.out.println("Last Modified : \n");
-                System.out.println("File Size: \n");
-                System.out.println("File URI: \n");
-                System.out.println("Total Tokens: " + totalTokensCount + "\n");
+                output.println("Application: File Magic\n");
+                output.println("Author: Tom Good\n");
+                output.println("Author Email: good@madisoncollege.edu\n");
+                output.println("Author: Tom Good\n");
+                output.println("File: " + inputFilePath + "\n");
+                output.println("Date of Analysis: \n");
+                output.println("Last Modified : \n");
+                output.println("File Size: \n");
+                output.println("File URI: \n");
+                output.println("Total Tokens: " + totalTokensCount + "\n");
         }
             catch (FileNotFoundException fileNotFound)
             {

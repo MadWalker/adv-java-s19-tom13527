@@ -8,8 +8,11 @@ import java.util.*;
     @author Tom Good
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
+    private Set<String> distinctTokens;
+    public Set<String> getDistinctTokens() { return distinctTokens; }
     public void processToken(String token) {
-
+        distinctTokens = new TreeSet();
+        distinctTokens.add(token);
     }
     /**
         This method will take in the inputed file and count/document the number
@@ -18,6 +21,24 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         @param args String inputFilePath, String outputFilePath
     */
     public void generateOutputFile(String inputFilePath, String outputFilePath) {
-
+        try (
+            BufferedReader input = new BufferedReader(new FileReader(inputFilePath));
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
+        )
+        {
+            output.println(getDistinctTokens());
+        }
+            catch (FileNotFoundException fileNotFound)
+            {
+                fileNotFound.printStackTrace();
+            }
+            catch (IOException inputOutputException)
+            {
+                inputOutputException.printStackTrace();
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
     }
 }
