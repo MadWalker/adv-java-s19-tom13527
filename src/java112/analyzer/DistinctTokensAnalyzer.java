@@ -26,7 +26,9 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-            output.println(getDistinctTokens());
+            for (String set : distinctTokens) {
+                output.println(set);
+            }
         }
             catch (FileNotFoundException fileNotFound)
             {

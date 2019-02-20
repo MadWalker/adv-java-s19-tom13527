@@ -23,8 +23,6 @@ public class FileAnalysis {
     */
     public void analyze(String[] arguements) {
         String inputText = "";
-        String summaryFilePath = "summary.txt";
-        String distinctTokensFilePath = "distinct_tokens.txt";
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");
@@ -32,9 +30,7 @@ public class FileAnalysis {
             FileAnalysis fileAnalysis = new FileAnalysis();
             fileAnalysis.createInstanceVariables();
             fileAnalysis.openInputFile(arguements[0], inputText);
-            fileAnalysis.generateTokens(inputText);
-            fileAnalysis.passGeneratedTokens(inputText);
-            fileAnalysis.writeOutputFiles(arguements[0], summaryFilePath, distinctTokensFilePath);
+            fileAnalysis.writeOutputFiles(arguements[0]);
         }
     }
     /**
@@ -73,16 +69,8 @@ public class FileAnalysis {
     */
     public void generateTokens(String tokens) {
         String[] tokenArray = tokens.split("\\W+");
-        int i = 0;
-        for (i=0; i < tokenArray.length; i++) {
-            System.out.println("Correct tokens: " + tokenArray[i]);
-        }
         for (String token : tokenArray) {
             passGeneratedTokens(token);
-            /**
-                FIX THE TWO SPACES ADDED TO ARRAY
-            */
-            System.out.println("Incorrect tokens: " + token);
         }
     }
     /**
@@ -102,7 +90,9 @@ public class FileAnalysis {
 
         @param args
     */
-    public void writeOutputFiles(String inputFilePath, String summaryFilePath, String distinctTokensFilePath) {
+    public void writeOutputFiles(String inputFilePath) {
+        String summaryFilePath = "summary.txt";
+        String distinctTokensFilePath = "distinct_tokens.txt";
         FileAnalysis fileAnalysis = new FileAnalysis();
         fileAnalysis.createInstanceVariables();
         summaryAnalyzer.generateOutputFile(inputFilePath, summaryFilePath);
