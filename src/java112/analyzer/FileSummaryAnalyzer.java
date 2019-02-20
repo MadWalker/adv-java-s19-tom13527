@@ -26,22 +26,23 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
 
         @param args not used here
     */
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+    public void generateOutputFile(String inputFile, String outputFilePath) {
+        System.out.println(inputFile);
         try (
-            BufferedReader input = new BufferedReader(new FileReader(inputFilePath));
+            BufferedReader input = new BufferedReader(new FileReader(inputFile));
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-                output.println("Application: File Magic\n");
-                output.println("Author: Tom Good\n");
-                output.println("Author Email: good@madisoncollege.edu\n");
-                output.println("Author: Tom Good\n");
-                output.println("File: " + inputFilePath + "\n");
-                output.println("Date of Analysis: \n");
-                output.println("Last Modified : \n");
-                output.println("File Size: \n");
-                output.println("File URI: \n");
-                output.println("Total Tokens: " + totalTokensCount + "\n");
+            output.println("Application: File Magic\n");
+            output.println("Author: Tom Good\n");
+            output.println("Author Email: good@madisoncollege.edu\n");
+            output.println("Author: Tom Good\n");
+            output.println("File: " + inputFile + "\n");
+            output.println("Date of Analysis: " + new Date() + "\n");
+            output.println("Last Modified : \n");
+            output.println("File Size: " + inputFile.length() + "\n");
+            output.println("File URI: \n");
+            output.println("Total Tokens: " + totalTokensCount + "\n");
         }
             catch (FileNotFoundException fileNotFound)
             {
