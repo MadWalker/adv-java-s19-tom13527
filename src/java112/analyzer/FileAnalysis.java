@@ -1,10 +1,17 @@
+/**
+    Class: DistinctTokensAnalyzer
+    Author: Tom Good
+    Create date: 2/16/2019
+*/
 package java112.analyzer;
 import java.io.*;
 import java.util.*;
 /**
-    This class will be the controller class for the analyzer project. It will
-    call the methods found in the FileSummaryAnalyzer and DistinctTonkensAnalyzer.
-    It will then display the output of both classes.
+    This class is the controller class for the analyzer project, setting up
+    the processing classes DistinctTokensAnalyzer and FileSummaryAnalyzer. It
+    holds the main run method, "analyze", which will then call all other mehtods
+    to open and read the input file, gather each token as a string, and pass each
+    token down to the two analyzer classes.
 
     @author Tom Good
 */
@@ -15,9 +22,10 @@ public class FileAnalysis {
     FileSummaryAnalyzer summaryAnalyzer;
     DistinctTokensAnalyzer distinctAnalyzer;
     /**
-        This method will test to make sure there are the correct number of command-line
-        arguements. It will then loop through an input file and run their analyze
-        methods
+        This method tests to make sure there are the correct number of command-line
+        arguements. If there is a correct amount of command line arguements,
+        the method will instantiate an instance of the FileAnalysis, then call
+        the createInstanceVariables, openInputFile, and writeOutputFiles methods.
 
         @param args String[] arguements
     */
@@ -34,19 +42,18 @@ public class FileAnalysis {
         }
     }
     /**
-        Create instance variables for FileSummaryAnalyzer and DistinctTokensAnalyzer
-
-        @param args not used here
+        This method instantiates the FileSummaryAnalyzer and DistinctTokensAnalyzer classes
     */
     public void createInstanceVariables() {
-        // instantiate instance variables
         summaryAnalyzer = new FileSummaryAnalyzer();
         distinctAnalyzer = new DistinctTokensAnalyzer();
     }
     /**
-        This method will open the input file with a buffered reader
+        This method opens the input file with a buffered reader, reads the file,
+        and adds each word to a string variable
 
-        @param args String inputFilePath
+        @param inputFilePath the name of the input file
+        @param inputText the instance variable that will hold each string from the input file
     */
     public void openInputFile(String inputFilePath, String inputText) {
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
@@ -63,9 +70,9 @@ public class FileAnalysis {
         }
     }
     /**
-        This method will loop through the lines of input and generate indivdual tokens
+        This method loops through the lines of input and generates indivdual tokens
 
-        @param args BufferedReader input
+        @param tokens the string passed down from the input file
     */
     public void generateTokens(String tokens) {
         String[] tokenArray = tokens.split("\\W+");
@@ -74,10 +81,10 @@ public class FileAnalysis {
         }
     }
     /**
-        This method will pass all the generated tokens to all of the Analyzer instances
+        This method passes all the generated tokens to all of the Analyzer instances
         via the processToken method
 
-        @param args
+        @param tokens the generated tokens passed down
     */
     public void passGeneratedTokens(String tokens) {
         FileAnalysis fileAnalysis = new FileAnalysis();
@@ -86,9 +93,11 @@ public class FileAnalysis {
         distinctAnalyzer.processToken(tokens);
     }
     /**
-        This method will call the generateOutputFile methods of the Analyzer isntances
+        This method calls the generateOutputFile methods for each of
+        the Analyzer isntances, as well as set the output file names for each
+        specific generateOutputFile method.
 
-        @param args
+        @param inputFilePath the name of the input file
     */
     public void writeOutputFiles(String inputFilePath) {
         String summaryFilePath = "summary.txt";

@@ -1,25 +1,44 @@
+/**
+    Class: DistinctTokensAnalyzer
+    Author: Tom Good
+    Create date: 2/16/2019
+*/
 package java112.analyzer;
 import java.io.*;
 import java.util.*;
 /**
-    This class will take a file inputed into the command line and count the number
-    of distinct tokens that are found within it's text.
+    Description:    This class, which implements the interface TokenAnalyzer,
+    gathers each distinct token and adds them to a TreeSet distinctTokens. It
+    then creates an output file that shows each distinct file found within
+    the input file.
 
     @author Tom Good
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
+    // Create instance variable
     private Set<String> distinctTokens = new TreeSet();
+    /**
+        The get method for the set distinctTokens
+
+        @return distinctTokens
+    */
     public Set<String> getDistinctTokens() {
         return distinctTokens;
     }
+    /**
+        This method takes each token sent to it and adds it to a TreeSet
+
+        @param token each token sent from the input file
+    */
     public void processToken(String token) {
         distinctTokens.add(token);
     }
     /**
-        This method will take in the inputed file and count/document the number
+        This method takes in the inputed file and counts/documents the number
         of distinct tokens found within the text.
 
-        @param args String inputFilePath, String outputFilePath
+        @param inputFilePath sends the name of the inputfile
+        @param outputFilePath sends the name of the outputfile
     */
     public void generateOutputFile(String inputFilePath, String outputFilePath) {
         try (
