@@ -26,23 +26,20 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
 
         @param args not used here
     */
-    public void generateOutputFile(String inputFile, String outputFilePath) {
-        System.out.println(inputFile);
+    public void generateOutputFile(String inputFilePath, String outputFilePath) {
         try (
-            BufferedReader input = new BufferedReader(new FileReader(inputFile));
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-            output.println("Application: File Magic\n");
-            output.println("Author: Tom Good\n");
-            output.println("Author Email: good@madisoncollege.edu\n");
-            output.println("Author: Tom Good\n");
-            output.println("File: " + inputFile + "\n");
-            output.println("Date of Analysis: " + new Date() + "\n");
-            output.println("Last Modified : \n");
-            output.println("File Size: " + inputFile.length() + "\n");
-            output.println("File URI: \n");
-            output.println("Total Tokens: " + totalTokensCount + "\n");
+            output.println("Application: File Magic");
+            output.println("Author: Tom Good");
+            output.println("Author Email: good@madisoncollege.edu");
+            output.println("File: " + inputFilePath);
+            output.println("Date of Analysis: " + new Date());
+            output.println("Last Modified :");
+            output.println("File Size: ");
+            output.println("File URI: ");
+            output.println("Total Tokens: " + getTotalTokensCount());
         }
             catch (FileNotFoundException fileNotFound)
             {

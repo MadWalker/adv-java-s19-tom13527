@@ -9,9 +9,11 @@ import java.util.*;
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
     private Set<String> distinctTokens;
-    public Set<String> getDistinctTokens() { return distinctTokens; }
+    public Set<String> getDistinctTokens() {
+        //distinctTokens = new TreeSet();
+        return distinctTokens;
+    }
     public void processToken(String token) {
-        distinctTokens = new TreeSet();
         distinctTokens.add(token);
     }
     /**
@@ -22,7 +24,6 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     */
     public void generateOutputFile(String inputFilePath, String outputFilePath) {
         try (
-            BufferedReader input = new BufferedReader(new FileReader(inputFilePath));
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
