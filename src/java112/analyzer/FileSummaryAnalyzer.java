@@ -46,6 +46,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         @param outputFilePath used to get the name of the output file
     */
     public void generateOutputFile(String inputFilePath, String outputFilePath) {
+        File inputFile = new File(inputFilePath);
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
@@ -53,11 +54,11 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
             output.println("Application: File Magic");
             output.println("Author: Tom Good");
             output.println("Author Email: good@madisoncollege.edu");
-            output.println("File: " + inputFilePath);
+            output.println("File: " + inputFile);
             output.println("Date of Analysis: " + new Date());
-            output.println("Last Modified :");
-            output.println("File Size: ");
-            output.println("File URI: ");
+            output.println("Last Modified : " + new Date(inputFile.lastModified()));
+            output.println("File Size: " + inputFile.length());
+            output.println("File URI: " + inputFile.toURI());
             output.println("Total Tokens: " + getTotalTokensCount());
         }
             catch (FileNotFoundException fileNotFound)
