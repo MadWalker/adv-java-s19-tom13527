@@ -11,7 +11,9 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     // Declare instance variable
     private int totalTokensCount;
     // Get method
-    public int getTotalTokensCount() { return totalTokensCount; }
+    public int getTotalTokensCount() {
+        return totalTokensCount;
+    }
 
     public void processToken(String token) {
         ArrayList<String> listOfTokens = new ArrayList();

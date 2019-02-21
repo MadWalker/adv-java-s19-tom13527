@@ -8,9 +8,8 @@ import java.util.*;
     @author Tom Good
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
-    private Set<String> distinctTokens;
+    private Set<String> distinctTokens = new TreeSet();
     public Set<String> getDistinctTokens() {
-        //distinctTokens = new TreeSet();
         return distinctTokens;
     }
     public void processToken(String token) {
@@ -27,9 +26,9 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
         {
-            for (String set : distinctTokens) {
-                output.println(set);
-            }
+            //output.println(distinctTokens.size());
+            distinctTokens.forEach(output::println);
+
         }
             catch (FileNotFoundException fileNotFound)
             {
