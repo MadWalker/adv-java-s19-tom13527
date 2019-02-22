@@ -45,7 +45,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         @param inputFilePath used to get input file name
         @param outputFilePath used to get the name of the output file
     */
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+    public void generateOutputFile(String inputFilePath, File outputFilePath) {
         File inputFile = new File(inputFilePath);
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))

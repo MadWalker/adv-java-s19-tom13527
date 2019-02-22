@@ -40,7 +40,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         @param inputFilePath sends the name of the inputfile
         @param outputFilePath sends the name of the outputfile
     */
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+    public void generateOutputFile(String inputFilePath, File outputFilePath) {
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))
         )
