@@ -21,5 +21,5 @@ public interface TokenAnalyzer {
         @param inputFilePath sends the name of the input file
         @param outputFilePath sends the name of the output file
     */
-    void generateOutputFile(String inputFilePath, File outputFilePath);
+    void generateOutputFile(String inputFilePath, String outputFilePath);
 }

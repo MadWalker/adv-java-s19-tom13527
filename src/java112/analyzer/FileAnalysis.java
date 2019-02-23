@@ -100,8 +100,8 @@ public class FileAnalysis {
         @param inputFilePath the name of the input file
     */
     public void writeOutputFiles(String inputFilePath) {
-        File summaryFilePath = new File("/home/student/GitHubRepos/adv-java-s19-tom13527/output/summary.txt");
-        File distinctTokensFilePath = new File("/home/student/GitHubRepos/adv-java-s19-tom13527/output/distinct_tokens.txt");
+        String summaryFilePath = "output/summary.txt";
+        String distinctTokensFilePath = "output/distinct_tokens.txt";
         FileAnalysis fileAnalysis = new FileAnalysis();
         fileAnalysis.createInstanceVariables();
         summaryAnalyzer.generateOutputFile(inputFilePath, summaryFilePath);
