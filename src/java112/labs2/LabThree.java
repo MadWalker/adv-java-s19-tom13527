@@ -26,6 +26,6 @@ public class LabThree {
 
     public void run(String propertiesFilePath) {
         loadProperties(propertiesFilePath);
-        System.out.println(getProperty());
+        System.out.println("Property is: " + properties.getProperty("author"));
     }
 }
