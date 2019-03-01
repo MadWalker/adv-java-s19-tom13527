@@ -19,7 +19,7 @@ public interface TokenAnalyzer {
     void processToken(String token);
     /**
         @param inputFilePath sends the name of the input file
-        @param outputFilePath sends the name of the output file
     */
-    void generateOutputFile(String inputFilePath, String outputFilePath);
+    //void generateOutputFile(String inputFilePath, String outputFilePath);
+    void generateOutputFile(String inputFilePath);
 }

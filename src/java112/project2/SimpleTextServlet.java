@@ -16,9 +16,9 @@ import javax.servlet.annotation.*;
 )
 public class SimpleTextServlet extends HttpServlet {
 
-    public void init() thows ServletException {
-        
-    }
+    /**public void init() thows ServletException {
+
+    }*/
     /**
      *  Handles HTTP GET requests.
      *
