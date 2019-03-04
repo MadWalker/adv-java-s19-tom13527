@@ -48,6 +48,8 @@ public class FileAnalysis implements PropertiesLoader {
         tokenAnalyzers = new ArrayList<TokenAnalyzer>();
         tokenAnalyzers.add(new FileSummaryAnalyzer(properties));
         tokenAnalyzers.add(new DistinctTokensAnalyzer(properties));
+        tokenAnalyzers.add(new LargestTokensAnalyzer(properties));
+        tokenAnalyzers.add(new DistinctTokenCountsAnalyzer(properties));
     }
     /**
         This method opens the input file with a buffered reader, reads the file,

@@ -1,53 +1,56 @@
 /**
-    Class: DistinctTokensAnalyzer
+    Class: DistinctTokenCountsAnalyzer
     Author: Tom Good
-    Create date: 2/16/2019
+    Create date: 3/04/2019
 */
 package java112.analyzer;
 import java.io.*;
 import java.util.*;
 /**
     Description:    This class, which implements the interface TokenAnalyzer,
-    gathers each distinct token and adds them to a TreeSet distinctTokens. It
-    then creates an output file that shows each distinct file found within
-    the input file.
+    will not only display each distinct token, but the number of times that token
+    shows up within the file
 
     @author Tom Good
 */
-public class DistinctTokensAnalyzer implements TokenAnalyzer {
-    // Empty constructor
-    public DistinctTokensAnalyzer() { }
+public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
+    // Empty Constructor
+    public DistinctTokenCountsAnalyzer() {}
     /**
         Constructor with one Properties parameter
 
         @param properties
     */
-    public DistinctTokensAnalyzer(Properties properties) {
+    public DistinctTokenCountsAnalyzer(Properties properties) {
         this();
         this.properties = properties;
     }
-    // Create instance variable
-    private Set<String> distinctTokens = new TreeSet();
+    // Declare instance variables
     private Properties properties;
-    /**
-        The get method for the set distinctTokens
+    private Map<String, Integer> distinctTokenCounts;
 
-        @return distinctTokens
-    */
-    public Set<String> getDistinctTokens() {
-        return distinctTokens;
-    }
     /**
-        This method takes each token sent to it and adds it to a TreeSet
+        Get method for distinctTokenCounts
+
+        @return distinctTokenCounts
+    */
+    public Map<String, Integer> getDistinctTokenCounts() {
+        return distinctTokenCounts;
+    }
+
+    /**
+        This method takes each token sent to it and adds it to a Map, which will
+        take the token and the number of times that token shows up in the file
 
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        distinctTokens.add(token);
+
     }
     /**
-        This method takes in the inputed file and counts/documents the number
-        of distinct tokens found within the text.
+        This method takes in the information gathered by the processToken method
+        , which is the distinct token and the number of times that token shows up,
+        and displays it to a new file.
 
         @param inputFilePath sends the name of the inputfile
     */
@@ -56,11 +59,11 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         //String distinctTokensFilePath = "output/distinct_tokens.txt";
         //File outputPath = new File(distinctTokensFilePath);
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct.counts"))))
         )
         {
             //output.println(distinctTokens.size());
-            distinctTokens.forEach(output::println);
+            //distinctTokens.forEach(output::println);
 
         }
             catch (FileNotFoundException fileNotFound)

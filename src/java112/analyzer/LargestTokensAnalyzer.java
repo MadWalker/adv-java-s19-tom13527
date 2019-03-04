@@ -1,53 +1,59 @@
 /**
-    Class: DistinctTokensAnalyzer
+    Class: LargestTokensAnalyzer
     Author: Tom Good
-    Create date: 2/16/2019
+    Create date: 3/04/2019
 */
 package java112.analyzer;
 import java.io.*;
 import java.util.*;
 /**
     Description:    This class, which implements the interface TokenAnalyzer,
-    gathers each distinct token and adds them to a TreeSet distinctTokens. It
-    then creates an output file that shows each distinct file found within
-    the input file.
+    will compare the length of  a distinct tokens shows up in a file and,
+    if it is larger than a specified number, the distinct token will be added
+    to a file
 
     @author Tom Good
 */
-public class DistinctTokensAnalyzer implements TokenAnalyzer {
+public class LargestTokensAnalyzer implements TokenAnalyzer {
     // Empty constructor
-    public DistinctTokensAnalyzer() { }
+    public LargestTokensAnalyzer() {}
     /**
         Constructor with one Properties parameter
 
         @param properties
     */
-    public DistinctTokensAnalyzer(Properties properties) {
+    public LargestTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
     }
-    // Create instance variable
-    private Set<String> distinctTokens = new TreeSet();
+    // Declare instance variables
     private Properties properties;
-    /**
-        The get method for the set distinctTokens
+    private Set<String> largestTokens = new TreeSet();
+    private int minimumTokenLength; //= properties.getProperty(largest.words.minimum.length);
 
-        @return distinctTokens
-    */
-    public Set<String> getDistinctTokens() {
-        return distinctTokens;
-    }
     /**
-        This method takes each token sent to it and adds it to a TreeSet
+        Get method for getLargestTokens
+
+        @return largestTokens
+    */
+    public Set<String> getLargestTokens() {
+        return largestTokens;
+    }
+
+    /**
+        This method takes each token sent to it and adds it to a TreeSet if the
+        length of the token in greater than the specified number
 
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        distinctTokens.add(token);
+        largestTokens.add(token);
     }
+
     /**
         This method takes in the inputed file and counts/documents the number
-        of distinct tokens found within the text.
+        of distinct tokens found within the input file as long as the length
+        of the token is more than the minimum number specified.
 
         @param inputFilePath sends the name of the inputfile
     */
@@ -56,11 +62,11 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         //String distinctTokensFilePath = "output/distinct_tokens.txt";
         //File outputPath = new File(distinctTokensFilePath);
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.largest.words"))))
         )
         {
             //output.println(distinctTokens.size());
-            distinctTokens.forEach(output::println);
+            largestTokens.forEach(output::println);
 
         }
             catch (FileNotFoundException fileNotFound)
