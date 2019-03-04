@@ -15,8 +15,20 @@ import java.util.*;
     @author Tom Good
 */
 public class DistinctTokensAnalyzer implements TokenAnalyzer {
+    // Empty constructor
+    public DistinctTokensAnalyzer() { }
+    /**
+        Constructor with one Properties parameter
+
+        @param properties
+    */
+    public DistinctTokensAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
+    }
     // Create instance variable
     private Set<String> distinctTokens = new TreeSet();
+    private Properties properties;
     /**
         The get method for the set distinctTokens
 
@@ -40,10 +52,12 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         @param inputFilePath sends the name of the inputfile
         @param outputFilePath sends the name of the outputfile
     */
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
-        File outputPath = new File(outputFilePath);
+    public void generateOutputFile(String inputFilePath) {
+        properties = new Properties();
+        //String distinctTokensFilePath = "output/distinct_tokens.txt";
+        //File outputPath = new File(distinctTokensFilePath);
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath)))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct"))))
         )
         {
             //output.println(distinctTokens.size());

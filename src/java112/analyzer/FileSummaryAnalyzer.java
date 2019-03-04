@@ -15,8 +15,20 @@ import java.util.*;
     @author Tom Good
 */
 public class FileSummaryAnalyzer implements TokenAnalyzer {
+    // Empty constructor
+    public FileSummaryAnalyzer() {}
+    /**
+        Constructor with one Properties parameter
+
+        @param properties
+    */
+    public FileSummaryAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
+    }
     // Declare instance variable
     private int totalTokensCount;
+    private Properties properties;
     /**
         Get method for totalTokensCount
 
@@ -45,16 +57,18 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         @param inputFilePath used to get input file name
         @param outputFilePath used to get the name of the output file
     */
-    public void generateOutputFile(String inputFilePath, String outputFilePath) {
+    public void generateOutputFile(String inputFilePath) {
+        properties = new Properties();
         File inputFile = new File(inputFilePath);
-        File outputPath = new File(outputFilePath);
+        //String summaryFilePath = "output/summary.txt";
+        //File outputPath = new File(summaryFilePath);
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath)))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.summary"))))
         )
         {
-            output.println("Application: File Magic");
-            output.println("Author: Tom Good");
-            output.println("Author Email: good@madisoncollege.edu");
+            output.println("Application name: " + properties.getProperty("application.name"));
+            output.println("Author: " + properties.getProperty("author"));
+            output.println("Author Email: " + properties.getProperty("author.email.address"));
             output.println("File: " + inputFile);
             output.println("Date of Analysis: " + new Date());
             output.println("Last Modified : " + new Date(inputFile.lastModified()));

@@ -20,7 +20,7 @@ public class FileAnalysis implements PropertiesLoader {
     // Declare constant
     final int COMMAND_LINE_ARGUEMENTS = 2;
     // Declare instance createInstanceVariables
-    List tokenAnalyzer;
+    List<TokenAnalyzer> tokenAnalyzers;
     /**
         This method tests to make sure there are the correct number of command-line
         arguements. If there is a correct amount of command line arguements,
@@ -35,19 +35,19 @@ public class FileAnalysis implements PropertiesLoader {
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
             System.out.println("Please enter the name of the input file.");
         } else {
-            FileAnalysis fileAnalysis = new FileAnalysis();
-            fileAnalysis.loadProperties(arguements[1]);
-            fileAnalysis.createInstanceVariables();
-            fileAnalysis.openInputFile(arguements[0], inputText);
-            fileAnalysis.writeOutputFiles(arguements[0]);
+            loadProperties(arguements[1]);
+            createInstanceVariables(loadProperties(arguements[1]));
+            openInputFile(arguements[0], inputText, loadProperties(arguements[1]));
+            writeOutputFiles(arguements[0]);
         }
     }
     /**
         This method instantiates the FileSummaryAnalyzer and DistinctTokensAnalyzer classes
     */
-    public void createInstanceVariables() {
-        summaryAnalyzer = new FileSummaryAnalyzer();
-        distinctAnalyzer = new DistinctTokensAnalyzer();
+    public void createInstanceVariables(Properties properties) {
+        tokenAnalyzers = new ArrayList<TokenAnalyzer>();
+        tokenAnalyzers.add(new FileSummaryAnalyzer(properties));
+        tokenAnalyzers.add(new DistinctTokensAnalyzer(properties));
     }
     /**
         This method opens the input file with a buffered reader, reads the file,
@@ -56,11 +56,11 @@ public class FileAnalysis implements PropertiesLoader {
         @param inputFilePath the name of the input file
         @param inputText the instance variable that will hold each string from the input file
     */
-    public void openInputFile(String inputFilePath, String inputText) {
+    public void openInputFile(String inputFilePath, String inputText, Properties properties) {
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
             while (input.ready()) {
                 inputText = input.readLine();
-                generateTokens(inputText);
+                generateTokens(inputText, properties);
             }
         } catch (FileNotFoundException fileNotFound) {
             fileNotFound.printStackTrace();
@@ -75,10 +75,10 @@ public class FileAnalysis implements PropertiesLoader {
 
         @param tokens the string passed down from the input file
     */
-    public void generateTokens(String tokens) {
+    public void generateTokens(String tokens, Properties properties) {
         String[] tokenArray = tokens.split("\\W+");
         for (String token : tokenArray) {
-            passGeneratedTokens(token);
+            passGeneratedTokens(token, properties);
         }
     }
     /**
@@ -87,11 +87,11 @@ public class FileAnalysis implements PropertiesLoader {
 
         @param tokens the generated tokens passed down
     */
-    public void passGeneratedTokens(String tokens) {
-        FileAnalysis fileAnalysis = new FileAnalysis();
-        fileAnalysis.createInstanceVariables();
-        summaryAnalyzer.processToken(tokens);
-        distinctAnalyzer.processToken(tokens);
+    public void passGeneratedTokens(String tokens, Properties properties) {
+        createInstanceVariables(properties);
+        for (TokenAnalyzer analyzer : tokenAnalyzers) {
+            analyzer.processToken(tokens);
+        }
     }
     /**
         This method calls the generateOutputFile methods for each of
@@ -101,11 +101,11 @@ public class FileAnalysis implements PropertiesLoader {
         @param inputFilePath the name of the input file
     */
     public void writeOutputFiles(String inputFilePath) {
-        String summaryFilePath = "output/summary.txt";
-        String distinctTokensFilePath = "output/distinct_tokens.txt";
-        FileAnalysis fileAnalysis = new FileAnalysis();
-        fileAnalysis.createInstanceVariables();
-        summaryAnalyzer.generateOutputFile(inputFilePath, summaryFilePath);
-        distinctAnalyzer.generateOutputFile(inputFilePath, distinctTokensFilePath);
+        //createInstanceVariables(loadProperties(properties));
+        //summaryAnalyzer.generateOutputFile(inputFilePath);
+        //distinctAnalyzer.generateOutputFile(inputFilePath);
+        for (TokenAnalyzer analyzer : tokenAnalyzers) {
+            analyzer.generateOutputFile(inputFilePath);
+        }
     }
 }
