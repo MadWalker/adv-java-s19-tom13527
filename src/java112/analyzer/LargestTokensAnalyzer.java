@@ -15,6 +15,10 @@ import java.util.*;
     @author Tom Good
 */
 public class LargestTokensAnalyzer implements TokenAnalyzer {
+    // Declare instance variables
+    private Properties properties;
+    private Set<String> largestTokens = new TreeSet();
+    private int minimumTokenLength; //= properties.getProperty(largest.words.minimum.length);
     // Empty constructor
     public LargestTokensAnalyzer() {}
     /**
@@ -25,12 +29,10 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     public LargestTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        properties = new Properties();
+        minimumTokenLength = Integer.parseInt(properties.getProperty("largest.words.minimum.length"));
+        System.out.println(minimumTokenLength);
     }
-    // Declare instance variables
-    private Properties properties;
-    private Set<String> largestTokens = new TreeSet();
-    private int minimumTokenLength; //= properties.getProperty(largest.words.minimum.length);
-
     /**
         Get method for getLargestTokens
 
@@ -47,7 +49,10 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        largestTokens.add(token);
+        int length = token.length();
+        if (length >= minimumTokenLength) {
+            largestTokens.add(token);
+        }
     }
 
     /**
