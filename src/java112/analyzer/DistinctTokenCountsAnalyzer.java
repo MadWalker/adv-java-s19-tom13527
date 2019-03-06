@@ -27,7 +27,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     }
     // Declare instance variables
     private Properties properties;
-    private Map<String, Integer> distinctTokenCounts = new HashMap<Integer, String>();;
+    private Map<String, Integer> distinctTokenCounts;// = new HashMap<Integer, String>();;
 
     /**
         Get method for distinctTokenCounts
@@ -45,7 +45,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        distinctTokensCounts.put();
+        //distinctTokensCounts.put();
     }
     /**
         This method takes in the information gathered by the processToken method
