@@ -44,6 +44,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     */
     public void processToken(String token) {
         distinctTokens.add(token);
+        System.out.println("Within processToken: " + token);
     }
     /**
         This method takes in the inputed file and counts/documents the number
@@ -52,14 +53,13 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         @param inputFilePath sends the name of the inputfile
     */
     public void generateOutputFile(String inputFilePath) {
-        properties = new Properties();
-        //String distinctTokensFilePath = "output/distinct_tokens.txt";
-        //File outputPath = new File(distinctTokensFilePath);
+        String outputPath = properties.getProperty("output.directory");
+        String outputFile = properties.getProperty("output.file.distinct");
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
-            //output.println(distinctTokens.size());
+            System.out.println("Within generateOutputFile: " + distinctTokens);
             distinctTokens.forEach(output::println);
 
         }

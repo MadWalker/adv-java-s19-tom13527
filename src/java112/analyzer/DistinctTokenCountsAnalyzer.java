@@ -55,11 +55,10 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         @param inputFilePath sends the name of the inputfile
     */
     public void generateOutputFile(String inputFilePath) {
-        properties = new Properties();
-        //String distinctTokensFilePath = "output/distinct_tokens.txt";
-        //File outputPath = new File(distinctTokensFilePath);
+        String outputPath = properties.getProperty("output.directory");
+        String outputFile = properties.getProperty("output.file.distinct.counts");
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.distinct.counts"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
             //output.println(distinctTokens.size());

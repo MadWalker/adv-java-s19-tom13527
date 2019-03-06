@@ -58,12 +58,11 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         @param outputFilePath used to get the name of the output file
     */
     public void generateOutputFile(String inputFilePath) {
-        properties = new Properties();
         File inputFile = new File(inputFilePath);
-        //String summaryFilePath = "output/summary.txt";
-        //File outputPath = new File(summaryFilePath);
+        String outputPath = properties.getProperty("output.directory");
+        String outputFile = properties.getProperty("output.file.summary");
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.summary"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
             output.println("Application name: " + properties.getProperty("application.name"));

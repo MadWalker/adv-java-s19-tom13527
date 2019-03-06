@@ -29,9 +29,7 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     public LargestTokensAnalyzer(Properties properties) {
         this();
         this.properties = properties;
-        properties = new Properties();
         minimumTokenLength = Integer.parseInt(properties.getProperty("largest.words.minimum.length"));
-        System.out.println(minimumTokenLength);
     }
     /**
         Get method for getLargestTokens
@@ -63,14 +61,12 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
         @param inputFilePath sends the name of the inputfile
     */
     public void generateOutputFile(String inputFilePath) {
-        properties = new Properties();
-        //String distinctTokensFilePath = "output/distinct_tokens.txt";
-        //File outputPath = new File(distinctTokensFilePath);
+        String outputPath = properties.getProperty("output.directory");
+        String outputFile = properties.getProperty("output.file.largest.words");
         try (
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(properties.getProperty("output.directory", "output.file.largest.words"))))
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
-            //output.println(distinctTokens.size());
             largestTokens.forEach(output::println);
 
         }
