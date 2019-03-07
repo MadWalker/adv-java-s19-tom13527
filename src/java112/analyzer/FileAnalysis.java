@@ -33,7 +33,7 @@ public class FileAnalysis implements PropertiesLoader {
         String inputText = "";
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
-            System.out.println("Please enter the name of the input file.");
+            System.out.println("Please enter the name of the input file and properties file.");
         } else {
             loadProperties(arguements[1]);
             createInstanceVariables(loadProperties(arguements[1]));
@@ -103,9 +103,6 @@ public class FileAnalysis implements PropertiesLoader {
         @param inputFilePath the name of the input file
     */
     public void writeOutputFiles(String inputFilePath) {
-        //createInstanceVariables(loadProperties(properties));
-        //summaryAnalyzer.generateOutputFile(inputFilePath);
-        //distinctAnalyzer.generateOutputFile(inputFilePath);
         for (TokenAnalyzer analyzer : tokenAnalyzers) {
             analyzer.generateOutputFile(inputFilePath);
         }
