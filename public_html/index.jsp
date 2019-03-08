@@ -28,28 +28,22 @@ Released for free under a Creative Commons Attribution 2.5 License
             <div id="posts">
                 <div class="post">
                     <h2 class="title">
-                        Welcome to Dusplic!
+                        Welcome to Tom's Project Home Page!
                     </h2>
                     <h3 class="posted">
-                        Posted on January 1th, 2007 by Author
+                        Created on March 7h, 2019 by Tom Good
                     </h3>
                     <div class="story">
-                        <p>
-                            <em><strong>Dusplic</strong></em> is a free template from <a href="http://www.freecsstemplates.org/"><strong>Free CSS Templates</strong></a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You're free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. Enjoy :)
-                        </p>
                     </div>
                     <div class="meta">
-                        <p>
-                            Filed under <a href="#" class="category">Uncategorized</a> | <a href="#" class="comment">1 Comment »</a>
-                        </p>
                     </div>
                 </div>
                 <div class="post">
                     <h2 class="title">
-                        Sample Tags
+                        Project 2 Files
                     </h2>
                     <h3 class="posted">
-                        Posted on January 1st, 2007 by Author
+                        Posted on March 7th, 2019 by Tom Good
                     </h3>
                     <div class="story">
                         <p>
@@ -57,7 +51,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                         </p>
                         <ol>
                             <li>
-                                <a href="#">Nullam et orci in erat viverra ornare.</a>
+                                <a href="http://localhost:8080/../output/summary.txt">Summary of File</a>
                             </li>
                             <li>
                                 <a href="#">Suspendisse quis gravida massa felis.</a>
@@ -66,13 +60,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                                 <a href="#">Curabitur malesuada turpis nec ante.</a>
                             </li>
                         </ol>
-                        <p>
-                            A blockquote:
-                        </p>
                         <blockquote>
-                            <p>
-                                “Et pulvinar pede ligula a sapien. Donec fermentum condimentum nisi. Proin iaculis mauris id lorem viverra molestie. Duis vel orci. Nam consequat. Morbi nec lacus.”
-                            </p>
                         </blockquote>
                     </div>
                     <div class="meta">
