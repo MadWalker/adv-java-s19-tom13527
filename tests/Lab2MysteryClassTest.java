@@ -13,65 +13,55 @@ import java.io.*;
 import java.util.*;
 import java112.labs1.MysteryClassOne;
 
-public class Lab2MysteryClassTest
-{
+public class Lab2MysteryClassTest {
 
     private static MysteryClassOne mysteryClass;
 
     @BeforeClass
-    public static void initialSetUp()
-    {
+    public static void initialSetUp() {
 
         mysteryClass = new MysteryClassOne();
 
     }
 
     @AfterClass
-    public static void tearDown()
-    {
+    public static void tearDown() {
         mysteryClass = null;
     }
 
     @Test
-    public void classExists()
-    {
+    public void classExists() {
         assertNotNull(mysteryClass);
     }
 
     @Test
-    public void methodOneReturnTest() throws NoSuchMethodException
-    {
+    public void methodOneReturnTest() throws NoSuchMethodException {
 
         Method method = MysteryClassOne.class.getMethod("mysteryMethodOne");
 
-        if (int.class != method.getReturnType())
-        {
+        if (int.class != method.getReturnType()) {
             fail("\t****** The class must have a method named 'mysteryMethodOne' that returns an int.\n");
         }
 
     }
 
     @Test
-    public void methodOneExistsTest() throws NoSuchMethodException
-    {
+    public void methodOneExistsTest() throws NoSuchMethodException {
 
         Method method = MysteryClassOne.class.getMethod("mysteryMethodOne");
 
-        if (method == null)
-        {
+        if (method == null) {
             fail("\t****** The class must have a method named 'mysteryMethodOne'\n");
         }
 
     }
 
     @Test
-    public void runMethodOneTest()
-    {
+    public void runMethodOneTest() {
 
         int result = mysteryClass.mysteryMethodOne();
 
-        if (result != 1)
-        {
+        if (result != 1) {
             fail("\t****** The mysteryMethodOne method must return the value of 1.\n");
         }
 

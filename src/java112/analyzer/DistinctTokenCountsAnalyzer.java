@@ -27,7 +27,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     }
     // Declare instance variables
     private Properties properties;
-    private Map<String, Integer> distinctTokenCounts = new HashMap<String, Integer>();
+    private Map<String, Integer> distinctTokenCounts = new TreeMap<String, Integer>();
     /**
         Get method for distinctTokenCounts
 
