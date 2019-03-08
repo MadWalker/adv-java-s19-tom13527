@@ -75,7 +75,12 @@ public class FileAnalysis implements PropertiesLoader {
     /**
         This method loops through the lines of input and generates indivdual tokens
 
-        @param tokens the string passed down from the input file
+        @param tokens the string passed down f    public void createInstanceVariables(Properties properties) {
+        tokenAnalyzers = new ArrayList<TokenAnalyzer>();
+        tokenAnalyzers.add(new FileSummaryAnalyzer(properties));
+        tokenAnalyzers.add(new DistinctTokensAnalyzer(properties));
+        tokenAnalyzers.add(new LargestTokensAnalyzer(properties));
+        tokenAnalyzers.add(new DistinctTokenCountsAnalyzer(properties));rom the input file
     */
     public void generateTokens(String tokens, Properties properties) {
         String[] tokenArray = tokens.split("\\W+");
@@ -90,7 +95,6 @@ public class FileAnalysis implements PropertiesLoader {
         @param tokens the generated tokens passed down
     */
     public void passGeneratedTokens(String tokens, Properties properties) {
-        createInstanceVariables(properties);
         for (TokenAnalyzer analyzer : tokenAnalyzers) {
             analyzer.processToken(tokens);
         }

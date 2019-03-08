@@ -9,7 +9,7 @@ import java.util.*;
 /**
     Description:    This class, which implements the interface TokenAnalyzer,
     will not only display each distinct token, but the number of times that token
-    shows up within the file
+    shows up within the file using a map
 
     @author Tom Good
 */
@@ -27,8 +27,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     }
     // Declare instance variables
     private Properties properties;
-    private Map<String, Integer> distinctTokenCounts;// = new HashMap<Integer, String>();;
-
+    private Map<String, Integer> distinctTokenCounts = new HashMap<String, Integer>();
     /**
         Get method for distinctTokenCounts
 
@@ -45,7 +44,19 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        //distinctTokensCounts.put();
+        /**for (Map.Entry<String, Integer> map : distinctTokenCounts.entrySet()) {
+            Integer count = 0;
+            if (map.getKey() == null) {
+                distinctTokenCounts.put(token, 1);
+            } else {
+                distinctTokenCounts.put(token, count + 1);
+            }
+        }*/
+        if (distinctTokenCounts.containsKey(token)) {
+            distinctTokenCounts.put(token, distinctTokenCounts.get(token) + 1);
+        } else {
+            distinctTokenCounts.put(token, 1);
+        }
     }
     /**
         This method takes in the information gathered by the processToken method
@@ -62,7 +73,10 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         )
         {
             //output.println(distinctTokens.size());
-            //distinctTokens.forEach(output::println);
+            //distinctTokenCount.forEach(output::println);
+            for (Map.Entry<String, Integer> map : distinctTokenCounts.entrySet()) {
+                output.println(map.getKey() + "\t" + map.getValue());
+            }
 
         }
             catch (FileNotFoundException fileNotFound)

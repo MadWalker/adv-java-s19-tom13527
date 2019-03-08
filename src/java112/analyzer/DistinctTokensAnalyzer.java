@@ -44,9 +44,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     */
     public void processToken(String token) {
         distinctTokens.add(token);
-        System.out.println("Within processToken: " + token);
     }
-    {System.out.println("outside of methods: " + distinctTokens);}
     /**
         This method takes in the inputed file and counts/documents the number
         of distinct tokens found within the text.
@@ -60,7 +58,6 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
-            System.out.println("Within generateOutputFile: " + distinctTokens);
             distinctTokens.forEach(output::println);
 
         }
@@ -77,5 +74,4 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
                 exception.printStackTrace();
             }
     }
-    {System.out.println("outside of methods: " + distinctTokens);}
 }
