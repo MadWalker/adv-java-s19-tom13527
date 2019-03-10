@@ -51,7 +51,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                         </p>
                         <ol>
                             <li>
-                                <a href="http://localhost:8080/../output/summary.txt">Summary of File</a>
+                                <a href="/trival">First Servlet</a>
                             </li>
                             <li>
                                 <a href="#">Suspendisse quis gravida massa felis.</a>
