@@ -18,10 +18,9 @@ Released for free under a Creative Commons Attribution 2.5 License
     <body>
         <div id="header">
             <h1>
-                <a href="#">Tom's Home Page</a>
+                Tom's Home Page
             </h1>
             <h2>
-                <a href="http://www.freecsstemplates.org/">by Free Css Templates</a>
             </h2>
         </div>
         <div id="content">
@@ -46,134 +45,62 @@ Released for free under a Creative Commons Attribution 2.5 License
                         Posted on March 7th, 2019 by Tom Good
                     </h3>
                     <div class="story">
-                        <p>
-                            An ordered list:
-                        </p>
                         <ol>
                             <li>
-                                <a href="/trival">First Servlet</a>
+                                <a href="/java112/firstServlet">First Servlet</a>
                             </li>
                             <li>
-                                <a href="#">Suspendisse quis gravida massa felis.</a>
-                            </li>
-                            <li>
-                                <a href="#">Curabitur malesuada turpis nec ante.</a>
+                                <a href="/java112/propertiesServlet">Properties Servlet</a>
                             </li>
                         </ol>
                         <blockquote>
                         </blockquote>
                     </div>
-                    <div class="meta">
-                        <p>
-                            Filed under <a href="#" class="category">Uncategorized</a> | <a href="#" class="comment">1 Comment »</a><br />
-                            <!--This theme is free for distriubtion,  so long as  link to openwebdesing.org and dubaiapartments.biz  stay on the theme--> Courtesy <a href="http://www.openwebdesign.org" target="_blank">Open Web Design</a><a href="http://www.dubaiapartments.biz" target="_blank"><img src="spacer.gif" width="5" height="5" border="0" /></a>Thanks to <a href="http://www.dubaiapartments.biz/" target="_blank">Dubai Hotels</a>
-                        </p>
-                    </div>
                 </div>
             </div>
             <div id="archives" class="boxed">
                 <h2 class="heading">
-                    Archives
+                    Project 2 Labs
                 </h2>
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="#">February</a> (7)
+                            <a href="/java112/indexDemo">Index Demo</a> (7)
                         </li>
                         <li>
-                            <a href="#">January 2007</a> (31)
-                        </li>
-                        <li>
-                            <a href="#">December 2006</a> (31)
-                        </li>
-                        <li>
-                            <a href="#">November 2006</a> (30)
-                        </li>
-                        <li>
-                            <a href="#">October 2006</a> (31)
-                        </li>
-                        <li>
-                            <a href="#">September 2006</a> (30)
-                        </li>
-                        <li>
-                            <a href="#">August 2006</a> (31)
-                        </li>
-                        <li>
-                            <a href="#">July 2006</a> (31)
-                        </li>
-                        <li>
-                            <a href="#">June 2006</a> (30)
+                            <a href="/java112/linkingDemo">Linking Demo</a> (31)
                         </li>
                     </ul>
                 </div>
             </div>
             <div id="categories" class="boxed">
                 <h2 class="heading">
-                    Categories
+                    Project 3 Labs
                 </h2>
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="#">Quisque vestibulum</a>
-                        </li>
-                        <li>
-                            <a href="#">Sed a nisl a lacus</a>
-                        </li>
-                        <li>
-                            <a href="#">Quisque sagittis</a>
-                        </li>
-                        <li>
-                            <a href="#">Etiam volutpat</a>
-                        </li>
-                        <li>
-                            <a href="#">In aliquet hendrerit</a>
-                        </li>
-                        <li>
-                            <a href="#">Suspendisse iaculis</a>
+                            <a href="#"></a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div id="blogroll" class="boxed">
                 <h2 class="heading">
-                    Blogroll
+                    Project 4 Labs
                 </h2>
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="#">AnotherFriendlySite.net</a>
-                        </li>
-                        <li>
-                            <a href="#">CoolSite.com</a>
-                        </li>
-                        <li>
-                            <a href="#">MyBestFriend.com</a>
+                            <a href="#"></a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div id="pages" class="boxed">
                 <h2 class="heading">
-                    Pages
                 </h2>
                 <div class="content">
-                    <ul>
-                        <li>
-                            <a href="#">My Blog</a>
-                        </li>
-                        <li>
-                            <a href="#">My Photos</a>
-                        </li>
-                        <li>
-                            <a href="#">My Favorites</a>
-                        </li>
-                        <li>
-                            <a href="#">About Me</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact Me</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div id="search" class="boxed">

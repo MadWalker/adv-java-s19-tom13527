@@ -22,6 +22,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: #6F7A9F;
 }
 
+h1 {
+	font-size: 10px;
+}
+
 a {
 	border-bottom: 1px solid #8A8E99;
 	text-decoration: none;
@@ -69,6 +73,7 @@ a:hover {
 	width: 230px;
 	height: 90px;
 	padding: 70px 0 0 30px;
+	font-size: 10px;
 	background: url(images/img2.jpg) no-repeat;
 }
 

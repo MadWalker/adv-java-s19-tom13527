@@ -1,5 +1,6 @@
 package java112.project2;
 
+import java.util.*;
 import java112.utilities.*;
 import java.io.*;
 import javax.servlet.*;
@@ -16,10 +17,11 @@ import javax.servlet.annotation.*;
     urlPatterns = { "/propertiesServlet" }
 )
 public class Project2PropertiesServlet extends HttpServlet implements PropertiesLoader {
-
-    /**public void init() thows ServletException {
-
-    }*/
+    // Create instance variabes
+    Properties properties = new Properties();
+    public void init() {
+        properties.loadProperties(project2.properties);
+    }
     /**
      *  Handles HTTP GET requests.
      *
@@ -36,9 +38,26 @@ public class Project2PropertiesServlet extends HttpServlet implements Properties
         out.print("<HTML>");
         out.print("<HEAD><TITLE>Tom Good</TITLE></HEAD>");
         out.print("<BODY>");
-        out.print("<h1>Tom Good</h1>");
-        out.print("<h2>Advanced Java Spring 2019</h2>");
-        out.print("<img src='image6.jpg' alt='Programmer photo'>");
+        out.print("<h1>Project 2 Properties Servlet</h1>");
+        out.print("<table>");
+        out.print("<tr>");
+        out.print("<td>Author</td>");
+        out.print("<td>Email</td>");
+        out.print("<td>Course</td>");
+        out.print("<td>Meet Date and Time</td>");
+        out.print("<td>Instructor</td>");
+        out.print("<td>Project Description</td>");
+        out.print("</tr>");
+        out.print("<tr>");
+        out.print("<td>" + properties.getProperty("author") + "</td>");
+        out.print("<td>" + properties.getProperty("author.email.address") + "</td>");
+        out.print("<td>" + properties.getProperty("course.title") + "</td>");
+        out.print("<td>" + properties.getProperty("course.meeting.date.and.time") + "</td>");
+        out.print("<td>" + properties.getProperty("instructor.name") + "</td>");
+        out.print("<td>" + properties.getProperty("project.description") + "</td>");
+        out.print("</td>");
+        out.print("</table>");
+        out.print("<a href='/java112'>Back to home page</a>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();
