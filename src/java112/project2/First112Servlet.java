@@ -37,7 +37,7 @@ public class First112Servlet extends HttpServlet {
         out.print("<BODY>");
         out.print("<h1>Tom Good</h1>");
         out.print("<h2>Advanced Java Spring 2019</h2>");
-        out.print("<img src='image6.jpg' alt='Programmer photo'>");
+        out.print("<img src='images/image6.jpg' alt='Programmer photo'>");
         out.print("</BODY>");
         out.print("</HTML>");
         out.close();
