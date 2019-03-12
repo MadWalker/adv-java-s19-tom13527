@@ -18,9 +18,9 @@ import javax.servlet.annotation.*;
 )
 public class Project2PropertiesServlet extends HttpServlet implements PropertiesLoader {
     // Create instance variabes
-    Properties properties = new Properties();
+    private Properties properties;// = new Properties();
     public void init() {
-        properties.loadProperties(project2.properties);
+        properties = loadProperties("/project2.properties");
     }
     /**
      *  Handles HTTP GET requests.

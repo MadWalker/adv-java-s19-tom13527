@@ -65,10 +65,10 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="/java112/indexDemo">Index Demo</a> (7)
+                            <a href="/indexDemo">Index Demo</a>
                         </li>
                         <li>
-                            <a href="/java112/linkingDemo">Linking Demo</a> (31)
+                            <a href="/linkingDemo">Linking Demo</a>
                         </li>
                     </ul>
                 </div>
