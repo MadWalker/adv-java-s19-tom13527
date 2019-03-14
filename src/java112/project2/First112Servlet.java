@@ -1,3 +1,8 @@
+/**
+    Class: First112Servlet
+    Author: Tom Good
+    Create date: 3/10/2019
+*/
 package java112.project2;
 
 import java.io.*;
@@ -6,19 +11,15 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- *  This is part of a lab and is the first servlet for the course.
+ *  This servlet will display some information about myself, the author, to the webpage
  *
- *@author    eknapp
+ *@author    Tom Good
  */
 @WebServlet(
     name = "firstServlet",
     urlPatterns = { "/firstServlet" }
 )
 public class First112Servlet extends HttpServlet {
-
-    /**public void init() thows ServletException {
-
-    }*/
     /**
      *  Handles HTTP GET requests.
      *

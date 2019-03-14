@@ -19,7 +19,7 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
     /**
         Constructor with one Properties parameter
 
-        @param properties
+        @param properties file path passed own
     */
     public DistinctTokenCountsAnalyzer(Properties properties) {
         this();
@@ -44,14 +44,6 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        /**for (Map.Entry<String, Integer> map : distinctTokenCounts.entrySet()) {
-            Integer count = 0;
-            if (map.getKey() == null) {
-                distinctTokenCounts.put(token, 1);
-            } else {
-                distinctTokenCounts.put(token, count + 1);
-            }
-        }*/
         if (distinctTokenCounts.containsKey(token)) {
             distinctTokenCounts.put(token, distinctTokenCounts.get(token) + 1);
         } else {
@@ -72,8 +64,6 @@ public class DistinctTokenCountsAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
-            //output.println(distinctTokens.size());
-            //distinctTokenCount.forEach(output::println);
             for (Map.Entry<String, Integer> map : distinctTokenCounts.entrySet()) {
                 output.println(map.getKey() + "\t" + map.getValue());
             }

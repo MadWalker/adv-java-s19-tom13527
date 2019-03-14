@@ -8,9 +8,8 @@ import java.io.*;
 import java.util.*;
 /**
     Description:    This class, which implements the interface TokenAnalyzer,
-    will compare the length of  a distinct tokens shows up in a file and,
-    if it is larger than a specified number, the distinct token will be added
-    to a file
+    will compare the length of  a distinct to a specified number (14). If the token
+    is greater than or equal to that number, it will show up within an output file
 
     @author Tom Good
 */
@@ -18,7 +17,7 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     // Declare instance variables
     private Properties properties;
     private Set<String> largestTokens = new TreeSet();
-    private int minimumTokenLength; //= properties.getProperty(largest.words.minimum.length);
+    private int minimumTokenLength;
     // Empty constructor
     public LargestTokensAnalyzer() {}
     /**

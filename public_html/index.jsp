@@ -65,10 +65,16 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="/indexDemo">Index Demo</a>
+                            <a href="indexDemo.jsp">Index Demo</a>
                         </li>
                         <li>
-                            <a href="/linkingDemo">Linking Demo</a>
+                            <a href="linkingDemo.html">Linking Demo</a>
+                        </li>
+                        <li>
+                            <a href="/java112/text">Simple Servlet</a>
+                        </li>
+                        <li>
+                            <a href="/java112/trivial">Trivial Servlet</a>
                         </li>
                     </ul>
                 </div>

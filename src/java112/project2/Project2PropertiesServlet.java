@@ -1,3 +1,8 @@
+/**
+    Class: Project2PropertiesServlet
+    Author: Tom Good
+    Create date: 3/10/2019
+*/
 package java112.project2;
 
 import java.util.*;
@@ -8,9 +13,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- *  This is part of a lab and is the first servlet for the course.
+ *  This servlet will recieve a properties file with information about the
+    project and display that information to the web page within a table
  *
- *@author    eknapp
+ *  @author    Tom Good
  */
 @WebServlet(
     name = "propertiesServlet",
@@ -18,7 +24,8 @@ import javax.servlet.annotation.*;
 )
 public class Project2PropertiesServlet extends HttpServlet implements PropertiesLoader {
     // Create instance variabes
-    private Properties properties;// = new Properties();
+    private Properties properties;
+    // Opens in properties file
     public void init() {
         properties = loadProperties("/project2.properties");
     }
@@ -42,20 +49,28 @@ public class Project2PropertiesServlet extends HttpServlet implements Properties
         out.print("<table>");
         out.print("<tr>");
         out.print("<td>Author</td>");
-        out.print("<td>Email</td>");
-        out.print("<td>Course</td>");
-        out.print("<td>Meet Date and Time</td>");
-        out.print("<td>Instructor</td>");
-        out.print("<td>Project Description</td>");
+        out.print("<td>" + properties.getProperty("author") + "</td>");
         out.print("</tr>");
         out.print("<tr>");
-        out.print("<td>" + properties.getProperty("author") + "</td>");
+        out.print("<td>Email</td>");
         out.print("<td>" + properties.getProperty("author.email.address") + "</td>");
+        out.print("</tr>");
+        out.print("<tr>");
+        out.print("<td>Course</td>");
         out.print("<td>" + properties.getProperty("course.title") + "</td>");
+        out.print("</tr>");
+        out.print("<tr>");
+        out.print("<td>Meet Date and Time</td>");
         out.print("<td>" + properties.getProperty("course.meeting.date.and.time") + "</td>");
+        out.print("</tr>");
+        out.print("<tr>");
+        out.print("<td>Instructor</td>");
         out.print("<td>" + properties.getProperty("instructor.name") + "</td>");
+        out.print("</tr>");
+        out.print("<tr>");
+        out.print("<td>Project Description</td>");
         out.print("<td>" + properties.getProperty("project.description") + "</td>");
-        out.print("</td>");
+        out.print("</tr>");
         out.print("</table>");
         out.print("<a href='/java112'>Back to home page</a>");
         out.print("</BODY>");

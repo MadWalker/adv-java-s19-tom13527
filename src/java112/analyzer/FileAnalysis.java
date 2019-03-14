@@ -42,7 +42,8 @@ public class FileAnalysis implements PropertiesLoader {
         }
     }
     /**
-        This method instantiates the FileSummaryAnalyzer and DistinctTokensAnalyzer classes
+        This method instantiates the TokenAnalyzer interface with an ArrayList
+        and adds each analyzer class to the list
     */
     public void createInstanceVariables(Properties properties) {
         tokenAnalyzers = new ArrayList<TokenAnalyzer>();
@@ -57,6 +58,7 @@ public class FileAnalysis implements PropertiesLoader {
 
         @param inputFilePath the name of the input file
         @param inputText the instance variable that will hold each string from the input file
+        @param properties properties passes down the properties file path
     */
     public void openInputFile(String inputFilePath, String inputText, Properties properties) {
         try (BufferedReader input = new BufferedReader(new FileReader(inputFilePath))) {
@@ -75,12 +77,8 @@ public class FileAnalysis implements PropertiesLoader {
     /**
         This method loops through the lines of input and generates indivdual tokens
 
-        @param tokens the string passed down f    public void createInstanceVariables(Properties properties) {
-        tokenAnalyzers = new ArrayList<TokenAnalyzer>();
-        tokenAnalyzers.add(new FileSummaryAnalyzer(properties));
-        tokenAnalyzers.add(new DistinctTokensAnalyzer(properties));
-        tokenAnalyzers.add(new LargestTokensAnalyzer(properties));
-        tokenAnalyzers.add(new DistinctTokenCountsAnalyzer(properties));rom the input file
+        @param tokens the string passed down
+        @param properties passes down the properties file path
     */
     public void generateTokens(String tokens, Properties properties) {
         String[] tokenArray = tokens.split("\\W+");
@@ -93,6 +91,7 @@ public class FileAnalysis implements PropertiesLoader {
         via the processToken method
 
         @param tokens the generated tokens passed down
+        @param properties passes down the properties file path
     */
     public void passGeneratedTokens(String tokens, Properties properties) {
         for (TokenAnalyzer analyzer : tokenAnalyzers) {
@@ -101,7 +100,7 @@ public class FileAnalysis implements PropertiesLoader {
     }
     /**
         This method calls the generateOutputFile methods for each of
-        the Analyzer isntances, as well as set the output file names for each
+        the Analyzer classes, as well as set the output file names for each
         specific generateOutputFile method.
 
         @param inputFilePath the name of the input file
