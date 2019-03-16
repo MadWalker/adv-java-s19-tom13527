@@ -86,7 +86,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="#"></a>
+                            <a href="myFirstJSP.jsp">Your first JSP</a>
                         </li>
                     </ul>
                 </div>
