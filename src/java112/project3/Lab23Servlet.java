@@ -32,10 +32,10 @@ public class Lab23Servlet extends HttpServlet {
         out.print("<HTML>");
         out.print("<HEAD><TITLE>Lab 2-3</TITLE></HEAD>");
         out.print("<BODY>");
-        out.print("<ul><li>Locale: " + response.getLocale() + "</li>");
-        out.print("<li>Context Path: no idea how to do</li>");
-        out.print("<li>Local Name of Server: no idea how to do</li>");
-        //out.print("<li>Scheme: " + response.getScheme() + "</li>");
+        out.print("<ul><li>Locale: " + request.getLocale() + "</li>");
+        out.print("<li>Context Path: " + request.getContextPath() + "</li>");
+        out.print("<li>Local Name of Server: " + request.getServerName() + "</li>");
+        out.print("<li>Scheme: " + request.getScheme() + "</li>");
         out.print("</ul>");
         out.print("</BODY>");
         out.print("</HTML>");
