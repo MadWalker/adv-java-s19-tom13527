@@ -18,20 +18,17 @@ Released for free under a Creative Commons Attribution 2.5 License
     <body>
         <div id="header">
             <h1>
-                This is a jsp
+                Lab 3 - 3
             </h1>
         </div>
         <div id="content">
             <div id="posts">
                 <div class="post">
-                    <h2 class="title">
-                        Here is a picture:
-                    </h2>
-                    <img src="images/image6.jpg" alt="Programmer photo">
-                    <h3>
-                        Here is is the date and time:
-                    </h3>
-                    <%= new java.util.Date() %>
+                    <h2>Map on a JSP Page</h2>
+                    <p>${myMap["number"]}</p>
+                    <p>${myMap["text"]}</p>
+                    ${myMap["html"]}
+                    <p>${myMap["aDate"]}</p>
 
                     <a href="/java112">Home</a>
                 </div>

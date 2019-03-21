@@ -91,6 +91,9 @@ Released for free under a Creative Commons Attribution 2.5 License
                         <li>
                             <a href="/java112/lab2-3">Https request lab</a>
                         </li>
+                        <li>
+                            <a href="lab33.jsp">Using EL Lab</a>
+                        </li>
                     </ul>
                 </div>
             </div>
