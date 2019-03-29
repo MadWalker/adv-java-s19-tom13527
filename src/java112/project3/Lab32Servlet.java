@@ -14,7 +14,7 @@ import javax.servlet.annotation.*;
     name = "Lab2-3",
     urlPatterns = { "/lab2-3" }
 )
-public class Lab23Servlet extends HttpServlet {
+public class Lab32Servlet extends HttpServlet {
 
     /**
      *  Handles HTTP GET requests.

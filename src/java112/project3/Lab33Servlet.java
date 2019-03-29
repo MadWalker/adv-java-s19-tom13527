@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
  *@author    eknapp
  */
 @WebServlet(
-    name = "lab33",
+    name = "lab33Servlet",
     urlPatterns = { "/lab33" }
 )
 public class Lab33Servlet extends HttpServlet {

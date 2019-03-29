@@ -32,7 +32,7 @@
                 <a href="/java112/lab2-3">Https request lab</a>
             </li>
             <li>
-                <a href="lab33.jsp">Using EL Lab</a>
+                <a href="/java112/lab33">Using EL Lab</a>
             </li>
         </ul>
     </div>
