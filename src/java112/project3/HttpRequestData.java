@@ -14,11 +14,11 @@ public class HttpRequestData {
     private String requestURL;
     private String protocolOfRequest;
     private String serverName;
-    private String serverPortNumber;
+    private int serverPortNumber;
     private String localeOfServer;
     private String queryString;
-    private String queryParameter = "queryParameter";
-    private String requestHeader = "User-Agent";
+    private String queryParameter;// = "queryParameter";
+    private String requestHeader;// = "User-Agent";
 
 
     // Zero parameter Constructor
@@ -87,7 +87,7 @@ public class HttpRequestData {
 
         @return The server port number
     */
-    public String getServerPortNumber() {
+    public int getServerPortNumber() {
         return serverPortNumber;
     }
     /**
@@ -184,7 +184,7 @@ public class HttpRequestData {
 
         @param serverPortNumber The server port number
     */
-    public void setServerPortNumber(String serverPortNumber) {
+    public void setServerPortNumber(int serverPortNumber) {
         this.serverPortNumber = serverPortNumber;
     }
     /**

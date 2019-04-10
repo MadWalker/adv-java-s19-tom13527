@@ -38,10 +38,10 @@ public class HttpRequestServlet extends HttpServlet {
         requestBean.setProtocolOfRequest(request.getProtocol());
         requestBean.setServerName(request.getServerName());
         requestBean.setServerPortNumber(request.getServerPort());
-        requestBean.setLocaleOfServer(request.getLocale());
+        //requestBean.setLocaleOfServer(request.getLocale());
         requestBean.setQueryString(request.getQueryString());
-        requestBean.setQueryParameter(request.getQueryParameter());
-        requestBean.setRequestHeader(request.getRequestHeader());
+        //requestBean.setQueryParameter(request.getQueryParameter());
+        //requestBean.setRequestHeader(request.getRequestHeader());
 
 
         request.setAttribute("myRequestBean", requestBean);
