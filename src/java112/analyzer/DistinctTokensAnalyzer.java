@@ -20,7 +20,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
     /**
         Constructor with one Properties parameter
 
-        @param properties file path 
+        @param properties file path
     */
     public DistinctTokensAnalyzer(Properties properties) {
         this();

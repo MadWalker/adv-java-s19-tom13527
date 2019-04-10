@@ -4,6 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.lang.*;
 
 /**
 
@@ -29,16 +30,25 @@ public class HttpRequestServlet extends HttpServlet {
 
         HttpRequestData requestBean = new HttpRequestData();
 
-        requestBean.setRemoteComputerName("I'm special!");
+        requestBean.setRemoteComputerName(request.getRemoteHost());
+        requestBean.setAddressOfRemoteComputer(request.getRemoteAddr());
+        requestBean.setHttpMethodOfRequest(request.getMethod());
+        requestBean.setRequestURI(request.getRequestURI());
+        requestBean.setRequestURL(request.getRequestURL().toString());
+        requestBean.setProtocolOfRequest(request.getProtocol());
+        requestBean.setServerName(request.getServerName());
+        requestBean.setServerPortNumber(request.getServerPort());
+        requestBean.setLocaleOfServer(request.getLocale());
+        requestBean.setQueryString(request.getQueryString());
+        requestBean.setQueryParameter(request.getQueryParameter());
+        requestBean.setRequestHeader(request.getRequestHeader());
 
 
+        request.setAttribute("myRequestBean", requestBean);
 
+        String url = "/project3HttpRequest.jsp";
 
-        //request.setAttribute("myCoolBean", myBean);
-
-        //String url = "/beanOneDemo.jsp";
-
-        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        //dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 }
