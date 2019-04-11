@@ -52,7 +52,7 @@ public class FileAnalysis implements PropertiesLoader {
         tokenAnalyzers.add(new LargestTokensAnalyzer(properties));
         tokenAnalyzers.add(new DistinctTokenCountsAnalyzer(properties));
         tokenAnalyzers.add(new TokenLengthsAnalyzer(properties));
-        tokenAnalyzers.add(new TokenSearchAnalyzer(properties));
+        //tokenAnalyzers.add(new TokenSearchAnalyzer(properties));
     }
     /**
         This method opens the input file with a buffered reader, reads the file,

@@ -69,7 +69,9 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
             for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
                 output.println(map.getKey() + "\t" + map.getValue());
             }
-
+            for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
+                output.println(map.getKey() + "\t" + "*");
+            }
         }
             catch (FileNotFoundException fileNotFound)
             {
@@ -83,5 +85,6 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
             {
                 exception.printStackTrace();
             }
+
     }
 }

@@ -53,7 +53,7 @@
                             <a href="/java112/request-servlet">HTTP Request Data Servlet</a>
                         </li>
                         <li>
-                            <a href="/java112/">Project Properties Servlet</a>
+                            <a href="/java112/project3-properties">Project Properties Servlet</a>
                         </li>
                     </ol>
                     <blockquote>

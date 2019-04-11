@@ -5,6 +5,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.lang.*;
+import java.util.*;
+import java112.utilities.*;
 
 /**
 
@@ -15,7 +17,7 @@ import java.lang.*;
     name = "project3PropertiesServlet",
     urlPatterns = { "/project3-properties" }
 )
-public class PropertiesServlet extends HttpServlet {
+public class PropertiesServlet extends HttpServlet implements PropertiesLoader {
     // Create instance variabes
     private Properties properties;
     // Opens in properties file

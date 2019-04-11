@@ -32,6 +32,11 @@ a {
 	color: #4369D1;
 }
 
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
 a:hover {
 	border: none;
 }
