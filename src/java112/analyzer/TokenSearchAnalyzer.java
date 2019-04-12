@@ -13,15 +13,17 @@ import java.util.*;
 
     @author Tom Good
 */
-/**public class TokenSearchAnalyzer implements TokenAnalyzer {
+public class TokenSearchAnalyzer implements TokenAnalyzer {
     // Empty Constructor
     public TokenSearchAnalyzer() {
         try (
             InputStream inputStream = this.getClass().getResourceAsStream("/search-tokens.txt");
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
-            readSearchTokens(searchTokensReader);
-            while
+            while (searchTokensReader.ready()) {
+                String inputText = searchTokensReader.readLine();
+                foundLocations.put(inputText, new ArrayList<Integer>());
+            }
         } catch (IOException inputOutputException) {
             inputOutputException.printStackTrace();
         } catch (Exception exception) {
@@ -32,7 +34,7 @@ import java.util.*;
         Constructor with one Properties parameter
 
         @param properties file path passed own
-    *
+    */
     public TokenSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
@@ -45,7 +47,7 @@ import java.util.*;
         Get method for foundLocations
 
         @return foundLocations
-    *
+    */
     public Map<String, List<Integer>> getFoundLocations() {
         return foundLocations;
     }
@@ -54,7 +56,7 @@ import java.util.*;
         This method...
 
         @param token each token sent from the input file
-    *
+    */
     public void processToken(String token) {
         if (tokenLengths.containsKey(token.length())) {
             tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
@@ -68,7 +70,7 @@ import java.util.*;
         and displays it to a new file.
 
         @param inputFilePath sends the name of the inputfile
-    *
+    */
     public void generateOutputFile(String inputFilePath) {
         String outputPath = properties.getProperty("output.directory");
         String outputFile = properties.getProperty("output.file.token.search");
@@ -95,4 +97,3 @@ import java.util.*;
             }
     }
 }
-*/

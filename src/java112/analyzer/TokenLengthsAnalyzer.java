@@ -29,6 +29,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     // Declare instance variables
     private Properties properties;
     private Map<Integer, Integer> tokenLengths = new TreeMap<Integer, Integer>();
+    //private int maxAmountOfTokens = 0;
     /**
         Get method for tokenLengths
 
@@ -48,6 +49,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     public void processToken(String token) {
         if (tokenLengths.containsKey(token.length())) {
             tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
+            //maxAmountOfTokens += 1;
         } else {
             tokenLengths.put(token.length(), + 1);
         }
@@ -62,6 +64,12 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     public void generateOutputFile(String inputFilePath) {
         String outputPath = properties.getProperty("output.directory");
         String outputFile = properties.getProperty("output.file.token.lengths");
+        int maxAmountOfTokens = 0;
+        for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
+            if (maxAmountOfTokens < map.getValue()) {
+                maxAmountOfTokens = map.getValue();
+            }
+        }
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
@@ -69,8 +77,34 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
             for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
                 output.println(map.getKey() + "\t" + map.getValue());
             }
+            output.println("\n\n");
             for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
-                output.println(map.getKey() + "\t" + "*");
+                int tokenInstances = map.getValue();
+                String repeated = "";
+                if (tokenInstances == maxAmountOfTokens) {
+                    repeated = new String(new char[77]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.9 && map.getValue() < maxAmountOfTokens) {
+                    repeated = new String(new char[69]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.8 && map.getValue() < maxAmountOfTokens * 0.9) {
+                    repeated = new String(new char[61]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.7 && map.getValue() < maxAmountOfTokens * 0.8) {
+                    repeated = new String(new char[53]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.6 && map.getValue() < maxAmountOfTokens * 0.7) {
+                    repeated = new String(new char[45]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.5 && map.getValue() < maxAmountOfTokens * 0.6) {
+                    repeated = new String(new char[37]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.4 && map.getValue() < maxAmountOfTokens * 0.5) {
+                    repeated = new String(new char[29]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.3 && map.getValue() < maxAmountOfTokens * 0.4) {
+                    repeated = new String(new char[21]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.2 && map.getValue() < maxAmountOfTokens * 0.3) {
+                    repeated = new String(new char[13]).replace("\0", "*");
+                } else if (tokenInstances >= maxAmountOfTokens * 0.1 && map.getValue() < maxAmountOfTokens * 0.2) {
+                    repeated = new String(new char[5]).replace("\0", "*");
+                } else if (tokenInstances < maxAmountOfTokens * 0.1) {
+                    repeated = new String(new char[1]).replace("\0", "*");
+                }
+                output.println(map.getKey() + "\t" + repeated);
             }
         }
             catch (FileNotFoundException fileNotFound)
