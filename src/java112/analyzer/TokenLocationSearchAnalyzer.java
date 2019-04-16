@@ -53,17 +53,19 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
             BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
             while (searchTokensReader.ready()) {
                 inputText = searchTokensReader.readLine();
-                foundLocations.put(inputText, new ArrayList<Integer>());
-                if (foundLocations.containsKey(token)) {
-                    foundLocations.get(token).add(currentTokenLocation);
+                if (inputText != null && inputText.length() > 0) {
+                    foundLocations.put(inputText, new ArrayList<Integer>());
                 }
-                currentTokenLocation += 1;
             }
         } catch (IOException inputOutputException) {
             inputOutputException.printStackTrace();
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+        if (foundLocations.containsKey(token)) {
+            foundLocations.get(token).add(currentTokenLocation);
+        }
+        currentTokenLocation += 1;
     }
     /**
         This method takes in the information gathered by the processToken method

@@ -47,7 +47,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        if (tokenLengths.containsKey(token.length())) {
+        if (tokenLengths.containsKey(token.length()) && token != null && token.length() > 0) {
             tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
         } else {
             tokenLengths.put(token.length(), + 1);
