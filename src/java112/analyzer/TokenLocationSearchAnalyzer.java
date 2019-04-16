@@ -13,36 +13,23 @@ import java.util.*;
 
     @author Tom Good
 */
-public class TokenSearchAnalyzer implements TokenAnalyzer {
+public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     // Empty Constructor
-    public TokenSearchAnalyzer() {
-        try (
-            InputStream inputStream = this.getClass().getResourceAsStream("/search-tokens.txt");
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
-            while (searchTokensReader.ready()) {
-                String inputText = searchTokensReader.readLine();
-                foundLocations.put(inputText, new ArrayList<Integer>());
-            }
-        } catch (IOException inputOutputException) {
-            inputOutputException.printStackTrace();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+    public TokenLocationSearchAnalyzer() {
     }
     /**
         Constructor with one Properties parameter
 
         @param properties file path passed own
     */
-    public TokenSearchAnalyzer(Properties properties) {
+    public TokenLocationSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
     }
     // Declare instance variables
     private Properties properties;
-    private Map<String, List<Integer>> foundLocations = new HashMap<String, List<Integer>>();
-    private int currentTokenLocation;
+    private Map<String, List<Integer>> foundLocations = new TreeMap<String, List<Integer>>();
+    private int currentTokenLocation = 0;
     /**
         Get method for foundLocations
 
@@ -58,10 +45,24 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        if (tokenLengths.containsKey(token.length())) {
-            tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
-        } else {
-            tokenLengths.put(token.length(), + 1);
+        String classDefPath = properties.getProperty("classpath.search.tokens");
+        String inputText;
+        try (
+            InputStream inputStream = this.getClass().getResourceAsStream(classDefPath);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
+            while (searchTokensReader.ready()) {
+                inputText = searchTokensReader.readLine();
+                foundLocations.put(inputText, new ArrayList<Integer>());
+                if (foundLocations.containsKey(token)) {
+                    foundLocations.get(token).add(currentTokenLocation);
+                }
+                currentTokenLocation += 1;
+            }
+        } catch (IOException inputOutputException) {
+            inputOutputException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
     /**
@@ -78,8 +79,9 @@ public class TokenSearchAnalyzer implements TokenAnalyzer {
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
-            for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
-                output.println(map.getKey() + "\t" + map.getValue());
+            for (Map.Entry<String, List<Integer>> map : foundLocations.entrySet()) {
+                output.println(map.getKey());
+                output.println(map.getValue().toString());
             }
 
         }

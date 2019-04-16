@@ -49,7 +49,6 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     public void processToken(String token) {
         if (tokenLengths.containsKey(token.length())) {
             tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
-            //maxAmountOfTokens += 1;
         } else {
             tokenLengths.put(token.length(), + 1);
         }
