@@ -14,9 +14,6 @@ import java.util.*;
     @author Tom Good
 */
 public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
-    // Empty Constructor
-    public TokenLocationSearchAnalyzer() {
-    }
     /**
         Constructor with one Properties parameter
 
@@ -25,6 +22,26 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     public TokenLocationSearchAnalyzer(Properties properties) {
         this();
         this.properties = properties;
+        String classDefPath = properties.getProperty("classpath.search.tokens");
+        String inputText;
+        try (
+            InputStream inputStream = this.getClass().getResourceAsStream(classDefPath);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
+            while (searchTokensReader.ready()) {
+                inputText = searchTokensReader.readLine();
+                if (inputText != null && inputText.length() > 0) {
+                    foundLocations.put(inputText, new ArrayList<Integer>());
+                }
+            }
+        } catch (IOException inputOutputException) {
+            inputOutputException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    public TokenLocationSearchAnalyzer() {
+
     }
     // Declare instance variables
     private Properties properties;
@@ -45,23 +62,6 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        String classDefPath = properties.getProperty("classpath.search.tokens");
-        String inputText;
-        try (
-            InputStream inputStream = this.getClass().getResourceAsStream(classDefPath);
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader searchTokensReader = new BufferedReader(inputStreamReader)) {
-            while (searchTokensReader.ready()) {
-                inputText = searchTokensReader.readLine();
-                if (inputText != null && inputText.length() > 0) {
-                    foundLocations.put(inputText, new ArrayList<Integer>());
-                }
-            }
-        } catch (IOException inputOutputException) {
-            inputOutputException.printStackTrace();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
         if (foundLocations.containsKey(token)) {
             foundLocations.get(token).add(currentTokenLocation);
         }
