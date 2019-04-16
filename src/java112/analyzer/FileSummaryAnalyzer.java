@@ -44,7 +44,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         @param token token from input file passed down
     */
     public void processToken(String token) {
-        ArrayList<String> listOfTokens = new ArrayList();
+        ArrayList<String> listOfTokens = new ArrayList<String>();
         listOfTokens.add(token);
         for (String list : listOfTokens) {
             totalTokensCount += 1;

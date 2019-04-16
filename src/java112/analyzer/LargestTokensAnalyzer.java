@@ -16,7 +16,7 @@ import java.util.*;
 public class LargestTokensAnalyzer implements TokenAnalyzer {
     // Declare instance variables
     private Properties properties;
-    private Set<String> largestTokens = new TreeSet();
+    private Set<String> largestTokens = new TreeSet<String>();
     private int minimumTokenLength;
     // Empty constructor
     public LargestTokensAnalyzer() {}

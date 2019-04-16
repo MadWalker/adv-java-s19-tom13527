@@ -27,7 +27,7 @@ public class DistinctTokensAnalyzer implements TokenAnalyzer {
         this.properties = properties;
     }
     // Create instance variable
-    private Set<String> distinctTokens = new TreeSet();
+    private Set<String> distinctTokens = new TreeSet<String>();
     private Properties properties;
     /**
         The get method for the set distinctTokens
