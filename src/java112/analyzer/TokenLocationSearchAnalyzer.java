@@ -46,7 +46,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     // Declare instance variables
     private Properties properties;
     private Map<String, List<Integer>> foundLocations = new TreeMap<String, List<Integer>>();
-    private int currentTokenLocation = 0;
+    private int currentTokenLocation = 1;
     /**
         Get method for foundLocations
 
@@ -76,14 +76,17 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     */
     public void generateOutputFile(String inputFilePath) {
         String outputPath = properties.getProperty("output.directory");
-        String outputFile = properties.getProperty("output.file.token.search");
+        String outputFile = properties.getProperty("output.file.token.search.locations");
+        int lineCounter = 0;
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
             for (Map.Entry<String, List<Integer>> map : foundLocations.entrySet()) {
-                output.println(map.getKey());
-                output.println(map.getValue().toString());
+                output.println(map.getKey() + " =");
+                if (lineCounter >= 80) {}
+                    output.println(map.getValue().toString() + "\n");
+
             }
 
         }
