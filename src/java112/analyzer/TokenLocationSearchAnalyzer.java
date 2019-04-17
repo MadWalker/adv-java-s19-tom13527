@@ -85,11 +85,21 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
             for (Map.Entry<String, List<Integer>> map : foundLocations.entrySet()) {
                 output.println(map.getKey() + " =");
                 String listString = "";
-                for (Integer list: map.getValue()) {
+                //for (Integer list: map.getValue()) {
+                for (int i = 0; i < map.getValue().size(); i++) {
                     //output.println(map.getValue().toString() + "\n");
-                    listString += list + ", ";
-                    output.println(list);
+                    if (map.getValue().size() == 1) {
+                        listString += map.getValue().get(i);
+                    } else if (i == 0) {
+                        listString += map.getValue().get(i) + ",";
+                    } else if (i == map.getValue().size() - 1) {
+                        listString += " " + map.getValue().get(i);
+                    } else {
+                        listString += " " + map.getValue().get(i) + ",";
+                    }
                 }
+                String wrapped = listString.replaceAll("(?<=\\G.{79})", "\n");
+                output.println("[" + wrapped + "]\n");
 
             }
 
