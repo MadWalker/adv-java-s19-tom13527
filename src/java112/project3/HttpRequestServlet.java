@@ -7,7 +7,8 @@ import javax.servlet.annotation.*;
 import java.lang.*;
 
 /**
-
+    This servlet will gather http request information and set that information
+    equal to the variables sent from the javabean HttpsRequestData
 
     @author Tom Good
  */
@@ -41,7 +42,7 @@ public class HttpRequestServlet extends HttpServlet {
         requestBean.setLocaleOfServer(request.getLocale().toString());
         requestBean.setQueryString(request.getQueryString());
         requestBean.setQueryParameter(request.getParameter("queryParameter"));
-        //requestBean.setRequestHeader(request.getRequestHeader());
+        requestBean.setRequestHeader(request.getHeaderNames().toString());
 
 
         request.setAttribute("myRequestBean", requestBean);

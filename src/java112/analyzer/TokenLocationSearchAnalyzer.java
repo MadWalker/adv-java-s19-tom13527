@@ -40,6 +40,7 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
             exception.printStackTrace();
         }
     }
+    // Empty constructor
     public TokenLocationSearchAnalyzer() {
 
     }
@@ -57,7 +58,9 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     }
 
     /**
-        This method...
+        This method will go through each token passed down and if it is within
+        the map foundLocations, add the current location of the token to the
+        value list of the map
 
         @param token each token sent from the input file
     */
