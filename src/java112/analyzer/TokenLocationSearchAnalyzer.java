@@ -77,15 +77,19 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
     public void generateOutputFile(String inputFilePath) {
         String outputPath = properties.getProperty("output.directory");
         String outputFile = properties.getProperty("output.file.token.search.locations");
-        int lineCounter = 0;
+
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
             for (Map.Entry<String, List<Integer>> map : foundLocations.entrySet()) {
                 output.println(map.getKey() + " =");
-                if (lineCounter >= 80) {}
-                    output.println(map.getValue().toString() + "\n");
+                String listString = "";
+                for (Integer list: map.getValue()) {
+                    //output.println(map.getValue().toString() + "\n");
+                    listString += list + ", ";
+                    output.println(list);
+                }
 
             }
 
