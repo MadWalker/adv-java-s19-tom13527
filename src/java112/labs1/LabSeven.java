@@ -36,7 +36,7 @@ public class LabSeven
     /**
         Description
 
-        @param outputName
+        @param outputName name of the output file
     */
     public void writeListToOutputFile(String outputName)
     {

@@ -27,13 +27,13 @@ public class FileAnalysis implements PropertiesLoader {
         the method will instantiate an instance of the FileAnalysis, then call
         the createInstanceVariables, openInputFile, and writeOutputFiles methods.
 
-        @param args String[] arguements
+        @param arguements gets the number of arguements in command line
     */
     public void analyze(String[] arguements) {
         String inputText = "";
         // test number of command line arguements
         if (arguements.length != COMMAND_LINE_ARGUEMENTS) {
-            System.out.println("Please enter the name of the input file and properties file.");
+            System.out.println("Please enter the name of the input file.");
         } else {
             loadProperties(arguements[1]);
             createInstanceVariables(loadProperties(arguements[1]));
@@ -44,6 +44,8 @@ public class FileAnalysis implements PropertiesLoader {
     /**
         This method instantiates the TokenAnalyzer interface with an ArrayList
         and adds each analyzer class to the list
+
+        @param properties sends down the properties loader
     */
     public void createInstanceVariables(Properties properties) {
         tokenAnalyzers = new ArrayList<TokenAnalyzer>();

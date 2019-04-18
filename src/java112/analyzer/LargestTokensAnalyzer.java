@@ -23,7 +23,7 @@ public class LargestTokensAnalyzer implements TokenAnalyzer {
     /**
         Constructor with one Properties parameter
 
-        @param properties
+        @param properties properties loader passed down
     */
     public LargestTokensAnalyzer(Properties properties) {
         this();

@@ -16,7 +16,7 @@ public class LabEight
     /**
         Create the set
 
-        @param outputFilePath
+        @param outputFilePath output file path
     */
     public void run(String outputFilePath)
     {

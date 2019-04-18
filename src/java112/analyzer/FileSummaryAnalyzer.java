@@ -20,7 +20,7 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
     /**
         Constructor with one Properties parameter
 
-        @param properties
+        @param properties passed down properties loader
     */
     public FileSummaryAnalyzer(Properties properties) {
         this();
@@ -55,7 +55,6 @@ public class FileSummaryAnalyzer implements TokenAnalyzer {
         of the file that is inputed to the command line by the user.
 
         @param inputFilePath used to get input file name
-        @param outputFilePath used to get the name of the output file
     */
     public void generateOutputFile(String inputFilePath) {
         File inputFile = new File(inputFilePath);
