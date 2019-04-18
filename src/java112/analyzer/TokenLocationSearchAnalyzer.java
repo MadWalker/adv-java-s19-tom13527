@@ -1,5 +1,5 @@
 /**
-    Class: TokenLengthsAnalyzer
+    Class: TokenLocationSearchAnalyzer
     Author: Tom Good
     Create date: 3/16/2019
 */
@@ -87,34 +87,29 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
         {
             for (Map.Entry<String, List<Integer>> map : foundLocations.entrySet()) {
                 output.println(map.getKey() + " =");
-                //StringBuilder sb = new StringBuilder("[");
-                // Append all Integers in StringBuilder to the StringBuilder.
-                /**for (int tokenLocations : map.getValue()) {
-                    sb.append(tokenLocations);
-                    sb.append(", ");
-                }
-                // Remove last delimiter with setLength.
-                sb.setLength(sb.length() - 1);
-                sb.append("]");
-                output.println(sb.toString());
-                */
                 StringBuilder listString = new StringBuilder("[");
-                //for (Integer list: map.getValue()) {
+                int lastNewLine = 0;
+                // loop through the map values
                 for (int i = 0; i < map.getValue().size(); i++) {
-                    //output.println(map.getValue().toString() + "\n");
+                    // output for a single location
                     if (map.getValue().size() == 1) {
                         listString.append(map.getValue().get(i));
+                    // output for the first location
                     } else if (i == 0) {
-                        listString.append(map.getValue().get(i) + ",");
+                        listString.append(map.getValue().get(i) + ", ");
+                    // output for the final location
                     } else if (i == map.getValue().size() - 1) {
-                        listString.append(" " + map.getValue().get(i));
+                        listString.append(map.getValue().get(i));
+                    // new line after 80 characters
+                } else if (listString.length() - lastNewLine > 70) {
+                        listString.append(map.getValue().get(i) + ",\n");
+                        lastNewLine = listString.length();
+                    // output for middle locations
                     } else {
-                        listString.append(" " + map.getValue().get(i) + ",");
+                        listString.append(map.getValue().get(i) + ", ");
                     }
                 }
-                //String wrapped = listString.replaceAll("(?<=\\G.{79})", "\n");
-                //output.println("[" + wrapped + "]\n");
-                output.println(listString.toString() + "]");
+                output.println(listString.toString() + "]\n");
             }
 
         }
