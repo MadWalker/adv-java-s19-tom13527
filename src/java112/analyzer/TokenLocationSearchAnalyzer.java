@@ -90,23 +90,23 @@ public class TokenLocationSearchAnalyzer implements TokenAnalyzer {
                 StringBuilder listString = new StringBuilder("[");
                 int lastNewLine = 0;
                 // loop through the map values
-                for (int i = 0; i < map.getValue().size(); i++) {
+                for (int listCounter = 0; listCounter < map.getValue().size(); listCounter++) {
                     // output for a single location
                     if (map.getValue().size() == 1) {
-                        listString.append(map.getValue().get(i));
+                        listString.append(map.getValue().get(listCounter));
                     // output for the first location
-                    } else if (i == 0) {
-                        listString.append(map.getValue().get(i) + ", ");
+                } else if (listCounter == 0) {
+                        listString.append(map.getValue().get(listCounter) + ", ");
                     // output for the final location
-                    } else if (i == map.getValue().size() - 1) {
-                        listString.append(map.getValue().get(i));
+                } else if (listCounter == map.getValue().size() - 1) {
+                        listString.append(map.getValue().get(listCounter));
                     // new line after 80 characters
-                } else if (listString.length() - lastNewLine > 70) {
-                        listString.append(map.getValue().get(i) + ",\n");
+                    } else if (listString.length() - lastNewLine > 70) {
+                        listString.append(map.getValue().get(listCounter) + ",\n");
                         lastNewLine = listString.length();
                     // output for middle locations
                     } else {
-                        listString.append(map.getValue().get(i) + ", ");
+                        listString.append(map.getValue().get(listCounter) + ", ");
                     }
                 }
                 output.println(listString.toString() + "]\n");

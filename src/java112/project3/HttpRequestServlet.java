@@ -42,8 +42,7 @@ public class HttpRequestServlet extends HttpServlet {
         requestBean.setLocaleOfServer(request.getLocale().toString());
         requestBean.setQueryString(request.getQueryString());
         requestBean.setQueryParameter(request.getParameter("queryParameter"));
-        requestBean.setRequestHeader(request.getHeaderNames().toString());
-
+        requestBean.setRequestHeader(request.getHeader("User-Agent"));
 
         request.setAttribute("myRequestBean", requestBean);
 

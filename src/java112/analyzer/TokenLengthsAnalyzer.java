@@ -29,7 +29,6 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     // Declare instance variables
     private Properties properties;
     private Map<Integer, Integer> tokenLengths = new TreeMap<Integer, Integer>();
-    //private int maxAmountOfTokens = 0;
     /**
         Get method for tokenLengths
 
@@ -38,7 +37,6 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
     public Map<Integer, Integer> getTokenLengths() {
         return tokenLengths;
     }
-
     /**
         This method takes each token sent to it and compares the length in size
         of the token to the number of times a token of the same length appears within
@@ -47,7 +45,7 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
         @param token each token sent from the input file
     */
     public void processToken(String token) {
-        if (tokenLengths.containsKey(token.length()) && token != null && token.length() > 0) {
+        if (tokenLengths.containsKey(token.length())) {
             tokenLengths.put(token.length(), tokenLengths.get(token.length()) + 1);
         } else {
             tokenLengths.put(token.length(), + 1);
@@ -64,46 +62,34 @@ public class TokenLengthsAnalyzer implements TokenAnalyzer {
         String outputPath = properties.getProperty("output.directory");
         String outputFile = properties.getProperty("output.file.token.lengths");
         int maxAmountOfTokens = 0;
+        // get the largest number of times a word length shows up in a file
         for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
             if (maxAmountOfTokens < map.getValue()) {
                 maxAmountOfTokens = map.getValue();
             }
         }
+        int histogramDividend = maxAmountOfTokens / 79;
         try (
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(outputPath + outputFile)))
         )
         {
+            // display the word length with the number of times it shows up in file
             for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
-                output.println(map.getKey() + "\t" + map.getValue());
+                // make sure 0 length is not displayed
+                if (map.getKey() != 0) {
+                    output.println(map.getKey() + "\t" + map.getValue());
+                }
             }
             output.println("\n\n");
+            // display histogram for number of times word length shows up in file
             for (Map.Entry<Integer, Integer> map : tokenLengths.entrySet()) {
                 int tokenInstances = map.getValue();
-                String repeated = "";
-                if (tokenInstances == maxAmountOfTokens) {
-                    repeated = new String(new char[77]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.9 && map.getValue() < maxAmountOfTokens) {
-                    repeated = new String(new char[69]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.8 && map.getValue() < maxAmountOfTokens * 0.9) {
-                    repeated = new String(new char[61]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.7 && map.getValue() < maxAmountOfTokens * 0.8) {
-                    repeated = new String(new char[53]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.6 && map.getValue() < maxAmountOfTokens * 0.7) {
-                    repeated = new String(new char[45]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.5 && map.getValue() < maxAmountOfTokens * 0.6) {
-                    repeated = new String(new char[37]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.4 && map.getValue() < maxAmountOfTokens * 0.5) {
-                    repeated = new String(new char[29]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.3 && map.getValue() < maxAmountOfTokens * 0.4) {
-                    repeated = new String(new char[21]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.2 && map.getValue() < maxAmountOfTokens * 0.3) {
-                    repeated = new String(new char[13]).replace("\0", "*");
-                } else if (tokenInstances >= maxAmountOfTokens * 0.1 && map.getValue() < maxAmountOfTokens * 0.2) {
-                    repeated = new String(new char[5]).replace("\0", "*");
-                } else if (tokenInstances < maxAmountOfTokens * 0.1) {
-                    repeated = new String(new char[1]).replace("\0", "*");
+                int numberOfStars = tokenInstances / histogramDividend;
+                // make sure 0 length is not displayed
+                if (map.getKey() != 0) {
+                    String repeated = new String(new char[numberOfStars]).replace("\0", "*");
+                    output.println(map.getKey() + "\t*" + repeated);
                 }
-                output.println(map.getKey() + "\t" + repeated);
             }
         }
             catch (FileNotFoundException fileNotFound)
