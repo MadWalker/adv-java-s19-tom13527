@@ -1,6 +1,6 @@
 <!--
     10-152-112 Advanced Java
-    build.xml for project 4
+    build.xml for project 2
 -->
 
 <project default="deploy">
@@ -14,8 +14,6 @@
   <property name="labs2" value="${src}/java112/labs2" />
   <property name="labs3" value="${src}/java112/labs3" />
   <property name="labs4" value="${src}/java112/labs4" />
-  <property name="dba" value="dba" />
-  <property name="employee" value="${src}/java112/employee" />
   <property name="utilities" value="${src}/java112/utilities" />
   <property name="config" value="config"/>
   <property name="build" value="build"/>
@@ -37,7 +35,7 @@
   <property name="project_1" value="present"/>
   <property name="project_2" value="present"/>
   <property name="project_3" value="present"/>
-  <property name="project_4" value="present"/>
+  <!-- <property name="project_4" value="present"/> -->
   <property name="lab_tests_src" value="${project_home}/src/java112/tests" />
 
   <target name="init1">
@@ -77,10 +75,9 @@
 
   <target name="init4" depends="init3" if="project_4">
     <tstamp/>
-    <mkdir dir="${employee}" />
+
     <mkdir dir="${project4}" />
     <mkdir dir="${labs4}" />
-    <mkdir dir="${dba}" />
     <echo message="Initialization for project 4 completed" />
   </target>
 
@@ -93,6 +90,7 @@
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
+    <!-- <delete file="${analyzer_lib}" /> -->
   </target>
 
   <target name="compile_analyzer" depends="init">
@@ -106,7 +104,6 @@
                      *.xml,
                      java112/labs1/**,
                      java112/labs2/**,
-                     java112/employee/**,
                      java112/project2/**,
                      java112/project3/**,
                      java112/project4/**,
@@ -303,49 +300,16 @@
     |   tcdown, tcup, tcbounce - Restarting tomcat                             |
 #########################################################################-->
   <target name="tcdown">
-    <exec dir="." executable="${tomcat}/bin/shutdown.sh">
-    </exec>
+    <exec dir="." executable="${tomcat}/bin/shutdown.sh" />
   </target>
   <target name="tcup">
-    <exec dir="." executable="${tomcat}/bin/startup.sh">
-        <env key="CATALINA_TMPDIR" value="${user_home}/analyzerdata/"/>
-    </exec>
+    <exec dir="." executable="${tomcat}/bin/startup.sh" />
   </target>
   <target name="tcbounce">
     <antcall target="tcdown" />
     <sleep seconds="4" />
     <antcall target="tcup" />
   </target>
-
-  <target name="compile_jdbc_lab" depends="init">
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}"
-      destdir="${build}/classes"
-      extdirs="${lib}"
-      verbose="false"
-      excludes="*.jsp,*.html,*.xml,
-        java112/labs1/**,
-        java112/labs2/**,
-        java112/labs3/**,
-        java112/project2/**,
-        java112/project3/**,
-        java112/tests/**,
-        java112/employee/**
-        java112/analyzer/**"
-      deprecation="on"
-      debug="on"
-      includeAntRuntime="false"
-    />
-  </target>
-
-  <target name="build_jdbc_lab" depends="clean, compile_jdbc_lab" >
-    <jar destfile="lib/jdbc_lab.jar">
-      <fileset dir="${build}/classes"
-        excludes="${build}/classes/java112/tests/**"
-      />
-    </jar>
-  </target>
-
 
 <!--  Testing Targets -->
 
