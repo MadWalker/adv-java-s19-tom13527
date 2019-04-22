@@ -8,13 +8,13 @@ import java.sql.*;
  *@author     Eric Knapp
  *
  */
-public class JDBCInsertEmployee {
+public class JDBCPreparedStatement {
 
     public void runSample(String[] arguements) {
 
         Connection connection = null;
-        Statement statement = null;
-        int rowsAffected = 0;
+        PreparedStatement statement = null;
+        Statement statement2 = null;
         ResultSet resultSet = null; // new
         // load the JDBC driver
         try {
@@ -22,28 +22,27 @@ public class JDBCInsertEmployee {
             // define connection URL
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/student", "student", "student");
-            // create statement object
-            statement = connection.createStatement();
-            // sql statement creation
-            int employeeId = Integer.parseInt(arguements[0]);
-            String firstName = "'" + arguements[1] + "'";
-            String lastName = "'" + arguements[2] + "'";
-            String ssn = "'" + arguements[3] + "'";
-            String department = "'" + arguements[4] + "'";
-            String room = "'" + arguements[5] + "'";
-            String phone = "'" + arguements[6] + "'";
-            String queryString = "INSERT INTO employees VALUES (" + employeeId + ", " + firstName + ", "
-                    + lastName + ", " + ssn + ", " + department + ", " + room + ", "
-                    + phone + ")";
-            // create display string
+            // create prepared statement objects
+            statement = connection.prepareStatement(
+                    "insert into employees  values(?,?,?,?,?,?,?)");
+            // insert user arguements to prepared statement
+            statement.setInt(1,Integer.parseInt(arguements[0]));
+            statement.setString(2,arguements[1]);
+            statement.setString(3,arguements[2]);
+            statement.setString(4,arguements[3]);
+            statement.setString(5,arguements[4]);
+            statement.setString(6,arguements[5]);
+            statement.setString(7,arguements[6]);
+            statement.executeUpdate();
+            // create displays
+            String queryString = "INSERT INTO employees VALUES (" + arguements[0] + ", "
+                    + arguements[1] + ", " + arguements[2] + ", " + arguements[3] + ", "
+                    + arguements[4] + ", " + arguements[5] + ", " + arguements[5] + ")";
             String queryString2 = "SELECT * FROM employees WHERE emp_id="
                     + Integer.parseInt(arguements[0]);
-            // display statement
             System.out.println("queryString: " + queryString);
-            // execute statements
-            rowsAffected = statement.executeUpdate(queryString);
+            // execute statement for display query
             resultSet = statement.executeQuery(queryString2);
-            System.out.println();
             // display results
             while (resultSet.next()) {
                 String employeeIdDisplay = resultSet.getString("emp_id");
@@ -82,21 +81,21 @@ public class JDBCInsertEmployee {
                 exception.printStackTrace();
             }
         }
-    }
+        }
 
-    /**
-     *  The main program for the JDBCSelectWhereExample class
-     *
-     *@param  args  The command line arguments
-     *
-     *@since
-     *
-     */
-    public static void main(String[] args) {
+        /**
+        *  The main program for the JDBCSelectWhereExample class
+        *
+        *@param  args  The command line arguments
+        *
+        *@since
+        *
+        */
+        public static void main(String[] args) {
 
-        JDBCInsertEmployee employees = new JDBCInsertEmployee();
+        JDBCPreparedStatement employees = new JDBCPreparedStatement();
 
         employees.runSample(args);
 
-    }
-}
+        }
+        }
