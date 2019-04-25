@@ -29,7 +29,7 @@ public class JDBCSelectEmployees {
                     + " FROM employees " + "WHERE last_name like '"
                     + name + "%'";
   
-            System.out.println("queryString: " + queryString);
+            //System.out.println("queryString: " + queryString);
   
             resultSet = statement.executeQuery(queryString);
   

@@ -2,10 +2,10 @@ package java112.labs2;
 import java.io.*;
 import java.util.*;
 
-public class LabThree {
+public class LabSix {
     public static void main(String[] args) {
-        LabThree lab3 = new LabThree();
-        lab3.run(args[0]);
+        LabSix lab6 = new LabSix();
+        lab6.run(args[0]);
     }
     Properties properties;
 
