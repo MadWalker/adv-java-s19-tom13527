@@ -1,4 +1,6 @@
 package java112.employee;
+
+import java.util.*;
 /**
  * This class will
  *
@@ -31,5 +33,50 @@ public class EmployeeDirectory {
             exception.printStackTrace();
         }
         return connection;
+    }
+    /**
+     * This method will add a new record to the Employee table in the database
+     */
+    public void addNewEmployeeToTable() {
+        Employee employeeClass = new Employee();
+        Connection connection = connectToDatabase();
+        Statement statement = null;
+        int rowsAffected = 0;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+
+            String insertQueryString = "INSERT INTO employees VALUES (" + employeeClass.getFirstName() + ", "
+                    + employeeClass.getLastName() + ", " + employeeClass.getSocialSecurityNumber()
+                    + ", " + employeeClass.getDepartment() + ", " + employeeClass.getRoomNumber() + ", "
+                    + employeeClass.getPhoneNumber() + ")";
+            rowsAffected = statement.executeUpdate(insertQueryString);
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
+    /**
+     * This method will be used to search the employee database
+     */
+    public Search searchEmployeeDatabase(String searchTerm, String searchType) {
+        return new Search();
     }
 }

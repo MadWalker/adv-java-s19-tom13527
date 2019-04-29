@@ -14,7 +14,7 @@ import java.util.List;
 public class Search {
     private String searchType;
     private String searchTerm;
-    //private List<Employee> results;
+    private List<Employee> results;
     private String foundEmployeesBoolean;
     /**
      * Gets search type.
@@ -52,18 +52,18 @@ public class Search {
      * Gets results.
      *
      * @return the results
-     *
-    public List<String> getResults() {
+     */
+    public List<Employee> getResults() {
         return results;
-    }*/
+    }
     /**
      * Sets results.
      *
      * @param results the results
-     *
-    public void setResults(List<String> results) {
+     */
+    public void setResults(List<Employee> results) {
         this.results = results;
-    }*/
+    }
     /**
      * Gets found employees boolean.
      *
