@@ -12,9 +12,10 @@ import java.sql.*;
 import java.util.*;
 
 public class EmployeeDirectory {
-    private Properties properties;
+    /**
+     * Constructor to connect to properties file
+     */
     public EmployeeDirectory(Properties properties) {}
-
     /**
      * This method will establish a connection to the employee database
      */
@@ -78,5 +79,14 @@ public class EmployeeDirectory {
      */
     public Search searchEmployeeDatabase(String searchTerm, String searchType) {
         return new Search();
+    }
+    /**
+     * This method will search the Employee database by an
+     * employee id
+     */
+    private void searchEmployeeDatabaseById() {
+        Search search = new Search();
+        Connection connection = connectToDatabase();
+
     }
 }

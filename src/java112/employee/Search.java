@@ -1,6 +1,6 @@
 package java112.employee;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * This class will hold the search type and term, the results, and boolean value for no
@@ -14,7 +14,7 @@ import java.util.List;
 public class Search {
     private String searchType;
     private String searchTerm;
-    private List<Employee> results;
+    private List<Employee> results = new ArrayList<>();
     private String foundEmployeesBoolean;
     /**
      * Gets search type.
@@ -89,8 +89,8 @@ public class Search {
      * of found employee objects
      *
      * @param employee
-     *
+     */
     public void addFoundEmployee(Employee employee) {
-        results = new ArrayList<Employee>();
-    }*/
+        results.add(employee);
+    }
 }
