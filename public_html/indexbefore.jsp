@@ -65,10 +65,10 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="indexDemo.jsp">Index Demo</a>
+                            <a href="demos/indexDemo.jsp">Index Demo</a>
                         </li>
                         <li>
-                            <a href="linkingDemo.html">Linking Demo</a>
+                            <a href="demos/linkingDemo.html">Linking Demo</a>
                         </li>
                         <li>
                             <a href="/java112/text">Simple Servlet</a>
@@ -86,13 +86,13 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="myFirstJSP.jsp">Your first JSP</a>
+                            <a href="demos/myFirstJSP.jsp">Your first JSP</a>
                         </li>
                         <li>
                             <a href="/java112/lab2-3">Https request lab</a>
                         </li>
                         <li>
-                            <a href="lab33.jsp">Using EL Lab</a>
+                            <a href="labs/lab33.jsp">Using EL Lab</a>
                         </li>
                     </ul>
                 </div>

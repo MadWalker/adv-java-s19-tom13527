@@ -6,7 +6,7 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ include file="head.jsp"%>
+<%@ include file="../head.jsp"%>
     <body>
         <div id="header">
             <h1>
@@ -20,6 +20,6 @@ Released for free under a Creative Commons Attribution 2.5 License
                     <p>the class favorite number is ${favoriteNumber}</p>
                 </div>
             </div>
-<%@ include file="content-side-bar.jsp"%>
-<%@ include file="footer.jsp"%>
+<%@ include file="../content-side-bar.jsp"%>
+<%@ include file="../footer.jsp"%>
 </html>

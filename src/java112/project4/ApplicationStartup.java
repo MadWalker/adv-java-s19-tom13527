@@ -16,6 +16,5 @@ public class ApplicationStartup implements PropertiesLoader {
     public void init() {
         Properties properties = new Properties();
         properties = loadProperties("/project4.properties");
-        servletConext.setAttribute("project4Properties", properties);
     }
 }

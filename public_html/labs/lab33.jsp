@@ -13,7 +13,7 @@ Released for free under a Creative Commons Attribution 2.5 License
         </title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <link href="default.css" rel="stylesheet" type="text/css" />
+        <link href="../default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="header">
@@ -40,10 +40,10 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="indexDemo.jsp">Index Demo</a>
+                            <a href="../demos/indexDemo.jsp">Index Demo</a>
                         </li>
                         <li>
-                            <a href="linkingDemo.html">Linking Demo</a>
+                            <a href="../demos/linkingDemo.html">Linking Demo</a>
                         </li>
                         <li>
                             <a href="/java112/text">Simple Servlet</a>
@@ -61,7 +61,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="myFirstJSP.jsp">Your first JSP</a>
+                            <a href="../demos/myFirstJSP.jsp">Your first JSP</a>
                         </li>
                     </ul>
                 </div>

@@ -6,7 +6,7 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ include file="head.jsp"%>
+<%@ include file="../head.jsp"%>
     <body>
         <div id="header">
             <h1>
@@ -19,7 +19,7 @@ Released for free under a Creative Commons Attribution 2.5 License
                     <h2 class="title">
                         Here is a picture:
                     </h2>
-                    <img src="images/image6.jpg" alt="Programmer photo">
+                    <img src="../images/image6.jpg" alt="Programmer photo">
                     <h3>
                         Here is is the date and time:
                     </h3>
@@ -28,6 +28,6 @@ Released for free under a Creative Commons Attribution 2.5 License
                     <a href="/java112">Home</a>
                 </div>
             </div>
-<%@ include file="content-side-bar.jsp"%>
-<%@ include file="footer.jsp"%>
+<%@ include file="../content-side-bar.jsp"%>
+<%@ include file="../footer.jsp"%>
 </html>
