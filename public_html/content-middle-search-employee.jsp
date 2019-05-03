@@ -28,7 +28,7 @@
                 Posted on May 2nd, 2019 by Tom Good
             </h3>
             <div class="story">
-                <form method="GET" action="/searchEmployees">
+                <form method="GET" action="/java112/searchEmployees">
                     Search Term:<br>
                     <input type="text" name="searchTerm"><br>
                     Search Type:<br>
