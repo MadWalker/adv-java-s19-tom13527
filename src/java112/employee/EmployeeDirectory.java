@@ -1,6 +1,7 @@
 package java112.employee;
 
 import java.util.*;
+import java.sql.*;
 /**
  * This class will
  *
@@ -9,7 +10,6 @@ import java.util.*;
  * @author Tom Good
  */
 import java.sql.*;
-import java.util.*;
 
 public class EmployeeDirectory {
     Properties properties;
@@ -39,9 +39,11 @@ public class EmployeeDirectory {
 
     /**
      * This method will be used to search the employee database
+     * @return search
      */
-    public Search searchEmployeeDatabase(String searchTerm, String searchType) {
-        return new Search();
+    public List<Employee> searchEmployeeDatabase(String searchTerm, String searchType) {
+        Search search = new Search();
+        return search.getResults();
     }
     /**
      * This method will search the Employee database by an
@@ -49,7 +51,63 @@ public class EmployeeDirectory {
      */
     private void searchEmployeeDatabaseById() {
         Search search = new Search();
+
+        String employeeId = "123";
+        Boolean searchBoolean = false;
+
         Connection connection = connectToDatabase();
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            //Class.forName("com.mysql.jdbc.Driver");
+
+            connection = connectToDatabase();
+
+            statement = connection.createStatement();
+
+            String queryString = "SELECT emp_id FROM employees "
+                    + "WHERE emp_id='" + employeeId + " '";
+
+
+            resultSet = statement.executeQuery(queryString);
+
+            if (resultSet.next()) {
+                searchBoolean = true;
+            } else {
+                searchBoolean = false;
+            }
+
+            if ()
+
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+
+
+
 
     }
 }
