@@ -15,11 +15,11 @@ import java.util.*;
 )
 public class ApplicationStartup extends HttpServlet implements PropertiesLoader {
     public void init() {
-        ServletContext sc = getServletContext();
+        ServletContext servletContext = getServletContext();
         Properties properties = new Properties();
         properties = loadProperties("/project4.properties");
-        sc.setAttribute("project4Properties", properties);
+        servletContext.setAttribute("project4Properties", properties);
         EmployeeDirectory employeeDirectory = new EmployeeDirectory(properties);
-        sc.setAttribute("employeeDirectoryStartup", employeeDirectory);
+        servletContext.setAttribute("employeeDirectoryStartup", employeeDirectory);
     }
 }

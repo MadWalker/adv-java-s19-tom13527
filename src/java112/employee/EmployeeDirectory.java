@@ -78,7 +78,18 @@ public class EmployeeDirectory {
                 searchBoolean = false;
             }
 
-            if ()
+            if ( searchBoolean) {
+                Employee employee = new Employee();
+                employee.setEmployeeId(resultSet.getString("emp_id"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
+                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                employee.setDepartment(resultSet.getString("dept"));
+                employee.setRoomNumber(resultSet.getString("room"));
+                employee.setPhoneNumber(resultSet.getString("phone"));
+
+                search.addFoundEmployee(employee);
+            }
 
 
         } catch (SQLException sqlException) {
@@ -105,10 +116,6 @@ public class EmployeeDirectory {
                 exception.printStackTrace();
             }
         }
-
-
-
-
     }
 }
 

@@ -1,5 +1,7 @@
 package java112.project4;
 
+import java112.employee.EmployeeDirectory;
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -29,7 +31,11 @@ public class EmployeeSearchResultsServlet extends HttpServlet {
             throws ServletException, IOException {
         ServletContext context = getServletContext();
         context.getAttribute("employeeDirectoryStartup");
-        
+        String searchTerm = request.getParameter("searchTerm");
+        String searchType = request.getParameter("searchType");
+
+        HttpSession session = request.getSession();
+        session.setAttribute("attribute", object);
         String url = "/employeeSearchResults.jsp";
         //Forward to jsp page
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
