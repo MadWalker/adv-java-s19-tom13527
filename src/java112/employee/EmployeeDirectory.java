@@ -43,6 +43,9 @@ public class EmployeeDirectory {
      */
     public List<Employee> searchEmployeeDatabase(String searchTerm, String searchType) {
         Search search = new Search();
+        if (searchType == "id") {
+            searchEmployeeDatabaseById();
+        }
         return search.getResults();
     }
     /**
@@ -51,10 +54,7 @@ public class EmployeeDirectory {
      */
     private void searchEmployeeDatabaseById() {
         Search search = new Search();
-
-        String employeeId = "123";
-        Boolean searchBoolean = false;
-
+        String employeeId = search.getSearchTerm();
         Connection connection = connectToDatabase();
         Statement statement = null;
         ResultSet resultSet = null;
@@ -73,12 +73,12 @@ public class EmployeeDirectory {
             resultSet = statement.executeQuery(queryString);
 
             if (resultSet.next()) {
-                searchBoolean = true;
+                search.setFoundEmployeesBoolean(true);
             } else {
-                searchBoolean = false;
+                search.setFoundEmployeesBoolean(false);
             }
 
-            if ( searchBoolean) {
+            if (search.isFoundEmployeesBoolean()) {
                 Employee employee = new Employee();
                 employee.setEmployeeId(resultSet.getString("emp_id"));
                 employee.setFirstName(resultSet.getString("first_name"));

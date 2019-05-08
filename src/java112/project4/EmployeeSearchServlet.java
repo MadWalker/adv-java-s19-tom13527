@@ -27,7 +27,7 @@ public class EmployeeSearchServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/employeeSearchResults.jsp";
+        String url = "/searchEmployee.jsp";
         //Forward to jsp page
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

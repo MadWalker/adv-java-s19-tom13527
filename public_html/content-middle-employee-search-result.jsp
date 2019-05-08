@@ -28,16 +28,16 @@
                 Posted on May 2nd, 2019 by Tom Good
             </h3>
             <div class="story">
-                <form method="GET" action="/java112/searchEmployees">
-                    <input type="text" name="searchTerm" /><br />
-                    <br />
-                    Search Type:
-                    <input type="radio" name="searchType" value="employeeId" checked/>ID<br />
-                    <!--<input type="radio" name="searchType" value="firstName" />First Name<br />
-                    <input type="radio" name="searchType" value="lastName" />Last Name<br />-->
-                    <br />
-                    <input type="submit" name="submit" value="Enter" />
-                </form>
+                <table>
+                    <tr>
+                        <th>Results:</th>
+                    </tr>
+                    <tr>
+                        <c:forEach var="listofResults" items="${employeeIdSearchResults}">
+                            <td>${listofResults}</td>
+                        </c:forEach>
+                    </tr>
+                </table>
                 <blockquote>
                 </blockquote>
                 <a href="/java112">Home</a>

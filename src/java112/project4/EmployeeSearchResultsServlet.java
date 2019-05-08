@@ -1,6 +1,8 @@
 package java112.project4;
 
+import java112.employee.Employee;
 import java112.employee.EmployeeDirectory;
+import java112.employee.Search;
 
 import java.io.*;
 import javax.servlet.*;
@@ -30,12 +32,13 @@ public class EmployeeSearchResultsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext context = getServletContext();
-        context.getAttribute("employeeDirectoryStartup");
+        EmployeeDirectory employeeDirectory = (EmployeeDirectory)context.getAttribute("employeeDirectoryStartup");
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType");
-
+        employeeDirectory.searchEmployeeDatabase(searchTerm, searchType);
         HttpSession session = request.getSession();
-        session.setAttribute("attribute", object);
+        Search search = new Search();
+        session.setAttribute("employeeIdSearchResults", search.getResults());
         String url = "/employeeSearchResults.jsp";
         //Forward to jsp page
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

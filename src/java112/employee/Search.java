@@ -15,7 +15,7 @@ public class Search {
     private String searchType;
     private String searchTerm;
     private List<Employee> results = new ArrayList<>();
-    private String foundEmployeesBoolean;
+    private boolean foundEmployeesBoolean;
     /**
      * Gets search type.
      *
@@ -69,15 +69,15 @@ public class Search {
      *
      * @return the found employees boolean
      */
-    public String getFoundEmployeesBoolean() {
-        return foundEmployeesBoolean;
+    public boolean isFoundEmployeesBoolean() {
+        return this.foundEmployeesBoolean;
     }
     /**
      * Sets found employees boolean.
      *
      * @param foundEmployeesBoolean the found employees boolean
      */
-    public void setFoundEmployeesBoolean(String foundEmployeesBoolean) {
+    public void setFoundEmployeesBoolean(boolean foundEmployeesBoolean) {
         this.foundEmployeesBoolean = foundEmployeesBoolean;
     }
     /**
