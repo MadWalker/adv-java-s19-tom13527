@@ -43,8 +43,16 @@ public class EmployeeDirectory {
      */
     public List<Employee> searchEmployeeDatabase(String searchTerm, String searchType) {
         Search search = new Search();
-        if (searchType == "id") {
+        search.setSearchTerm(searchTerm);
+        search.setSearchType(searchType);
+        if (search.getSearchType() == "id") {
             searchEmployeeDatabaseById();
+        }
+        if (search.getSearchType() == "lastName") {
+            searchEmployeeDatabaseByLastName();
+        }
+        if (search.getSearchType() == "firstName") {
+            searchEmployeeDatabaseByFirstName();
         }
         return search.getResults();
     }
@@ -87,7 +95,142 @@ public class EmployeeDirectory {
                 employee.setDepartment(resultSet.getString("dept"));
                 employee.setRoomNumber(resultSet.getString("room"));
                 employee.setPhoneNumber(resultSet.getString("phone"));
+                search.addFoundEmployee(employee);
+            }
 
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
+    /**
+     * This method will search the Employee database by an
+     * employee last name
+     */
+    private void searchEmployeeDatabaseByLastName() {
+        Search search = new Search();
+        String lastName = search.getSearchTerm();
+        Connection connection = connectToDatabase();
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            //Class.forName("com.mysql.jdbc.Driver");
+
+            connection = connectToDatabase();
+
+            statement = connection.createStatement();
+
+            String queryString = "SELECT last_name FROM employees "
+                    + "WHERE last_name='" + lastName + " '";
+
+
+            resultSet = statement.executeQuery(queryString);
+
+            if (resultSet.next()) {
+                search.setFoundEmployeesBoolean(true);
+            } else {
+                search.setFoundEmployeesBoolean(false);
+            }
+
+            if (search.isFoundEmployeesBoolean()) {
+                Employee employee = new Employee();
+                employee.setEmployeeId(resultSet.getString("emp_id"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
+                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                employee.setDepartment(resultSet.getString("dept"));
+                employee.setRoomNumber(resultSet.getString("room"));
+                employee.setPhoneNumber(resultSet.getString("phone"));
+                search.addFoundEmployee(employee);
+            }
+
+
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        } catch (Exception exception) {
+            System.err.println("General Error");
+            exception.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+    }
+    /**
+     * This method will search the Employee database by an
+     * employee first name
+     */
+    private void searchEmployeeDatabaseByFirstName() {
+        Search search = new Search();
+        String firstName = search.getSearchTerm();
+        Connection connection = connectToDatabase();
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            //Class.forName("com.mysql.jdbc.Driver");
+
+            connection = connectToDatabase();
+
+            statement = connection.createStatement();
+
+            String queryString = "SELECT first_name FROM employees "
+                    + "WHERE first_name='" + firstName + " '";
+
+
+            resultSet = statement.executeQuery(queryString);
+
+            if (resultSet.next()) {
+                search.setFoundEmployeesBoolean(true);
+            } else {
+                search.setFoundEmployeesBoolean(false);
+            }
+
+            if (search.isFoundEmployeesBoolean()) {
+                Employee employee = new Employee();
+                employee.setEmployeeId(resultSet.getString("emp_id"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
+                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                employee.setDepartment(resultSet.getString("dept"));
+                employee.setRoomNumber(resultSet.getString("room"));
+                employee.setPhoneNumber(resultSet.getString("phone"));
                 search.addFoundEmployee(employee);
             }
 
@@ -118,43 +261,3 @@ public class EmployeeDirectory {
         }
     }
 }
-
-/**
- * This method will add a new record to the Employee table in the database
- *
- public void addNewEmployeeToTable() {
- Employee employeeClass = new Employee();
- Connection connection = connectToDatabase();
- Statement statement = null;
- int rowsAffected = 0;
- ResultSet resultSet = null;
- try {
- statement = connection.createStatement();
-
- String insertQueryString = "INSERT INTO employees VALUES (" + employeeClass.getFirstName() + ", "
- + employeeClass.getLastName() + ", " + employeeClass.getSocialSecurityNumber()
- + ", " + employeeClass.getDepartment() + ", " + employeeClass.getRoomNumber() + ", "
- + employeeClass.getPhoneNumber() + ")";
- rowsAffected = statement.executeUpdate(insertQueryString);
- } catch (Exception exception) {
- System.err.println("General Error");
- exception.printStackTrace();
- } finally {
- try {
- if (resultSet != null) {
- resultSet.close();
- }
- if (statement != null) {
- statement.close();
- }
-
- if (connection != null) {
- connection.close();
- }
- } catch (SQLException sqlException) {
- sqlException.printStackTrace();
- } catch (Exception exception) {
- exception.printStackTrace();
- }
- }
- }*/
