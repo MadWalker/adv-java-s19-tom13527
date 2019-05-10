@@ -3,7 +3,8 @@ package java112.employee;
 import java.util.*;
 import java.sql.*;
 /**
- * This class will
+ * This class will hold the methods that will open a connection to the database and
+ * perform query statements, returning those statements as variables to be seen as results
  *
  * Created: 4/27/2019
  *
@@ -65,38 +66,30 @@ public class EmployeeDirectory {
         Connection connection = connectToDatabase();
         Statement statement = null;
         ResultSet resultSet = null;
-
         try {
             connection = connectToDatabase();
-
             statement = connection.createStatement();
-
             String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
                     + "WHERE emp_id='" + employeeId + "';";
-
-            System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
-
-            if (resultSet.next()) {
+            if (resultSet.isBeforeFirst()) {
                 search.setFoundEmployeesBoolean(true);
             } else {
                 search.setFoundEmployeesBoolean(false);
             }
-
             if (search.isFoundEmployeesBoolean()) {
-                Employee employee = new Employee();
-                System.out.println("EMPLOYEE ID:" + resultSet.getString("emp_id"));
-                employee.setEmployeeId(resultSet.getString("emp_id"));
-                employee.setFirstName(resultSet.getString("first_name"));
-                employee.setLastName(resultSet.getString("last_name"));
-                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
-                employee.setDepartment(resultSet.getString("dept"));
-                employee.setRoomNumber(resultSet.getString("room"));
-                employee.setPhoneNumber(resultSet.getString("phone"));
-                search.addFoundEmployee(employee);
+                while (resultSet.next()) {
+                    Employee employee = new Employee();
+                    employee.setEmployeeId(resultSet.getString("emp_id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoomNumber(resultSet.getString("room"));
+                    employee.setPhoneNumber(resultSet.getString("phone"));
+                    search.addFoundEmployee(employee);
+                }
             }
-
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (Exception exception) {
@@ -131,12 +124,8 @@ public class EmployeeDirectory {
         Connection connection = connectToDatabase();
         Statement statement = null;
         ResultSet resultSet = null;
-
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
-
             connection = connectToDatabase();
-
             statement = connection.createStatement();
 
             String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
@@ -144,27 +133,26 @@ public class EmployeeDirectory {
 
             System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
-
-            if (resultSet.next()) {
+            if (resultSet.isBeforeFirst()) {
                 search.setFoundEmployeesBoolean(true);
-                System.out.println("RESULTS: " + resultSet.getString("first_name"));
             } else {
                 search.setFoundEmployeesBoolean(false);
             }
-
+            System.out.println(search.isFoundEmployeesBoolean());
             if (search.isFoundEmployeesBoolean()) {
-                Employee employee = new Employee();
-                employee.setEmployeeId(resultSet.getString("emp_id"));
-                employee.setFirstName(resultSet.getString("first_name"));
-                employee.setLastName(resultSet.getString("last_name"));
-                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
-                employee.setDepartment(resultSet.getString("dept"));
-                employee.setRoomNumber(resultSet.getString("room"));
-                employee.setPhoneNumber(resultSet.getString("phone"));
-                search.addFoundEmployee(employee);
+                while (resultSet.next()) {
+                    Employee employee = new Employee();
+                    System.out.println("EMPLOYEE ID:" + resultSet.getString("emp_id"));
+                    employee.setEmployeeId(resultSet.getString("emp_id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoomNumber(resultSet.getString("room"));
+                    employee.setPhoneNumber(resultSet.getString("phone"));
+                    search.addFoundEmployee(employee);
+                }
             }
-
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (Exception exception) {
@@ -199,39 +187,30 @@ public class EmployeeDirectory {
         Connection connection = connectToDatabase();
         Statement statement = null;
         ResultSet resultSet = null;
-
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
-
             connection = connectToDatabase();
-
             statement = connection.createStatement();
-
             String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
                     + "WHERE first_name='" + firstName + "'";
-
-            System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
-
-            if (resultSet.next()) {
+            if (resultSet.isBeforeFirst()) {
                 search.setFoundEmployeesBoolean(true);
             } else {
                 search.setFoundEmployeesBoolean(false);
             }
-
             if (search.isFoundEmployeesBoolean()) {
-                Employee employee = new Employee();
-                employee.setEmployeeId(resultSet.getString("emp_id"));
-                employee.setFirstName(resultSet.getString("first_name"));
-                employee.setLastName(resultSet.getString("last_name"));
-                employee.setSocialSecurityNumber(resultSet.getString("ssn"));
-                employee.setDepartment(resultSet.getString("dept"));
-                employee.setRoomNumber(resultSet.getString("room"));
-                employee.setPhoneNumber(resultSet.getString("phone"));
-                search.addFoundEmployee(employee);
+                while (resultSet.next()) {
+                    Employee employee = new Employee();
+                    employee.setEmployeeId(resultSet.getString("emp_id"));
+                    employee.setFirstName(resultSet.getString("first_name"));
+                    employee.setLastName(resultSet.getString("last_name"));
+                    employee.setSocialSecurityNumber(resultSet.getString("ssn"));
+                    employee.setDepartment(resultSet.getString("dept"));
+                    employee.setRoomNumber(resultSet.getString("room"));
+                    employee.setPhoneNumber(resultSet.getString("phone"));
+                    search.addFoundEmployee(employee);
+                }
             }
-
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         } catch (Exception exception) {
