@@ -41,43 +41,40 @@ public class EmployeeDirectory {
      * This method will be used to search the employee database
      * @return search
      */
-    public List<Employee> searchEmployeeDatabase(String searchTerm, String searchType) {
+    public Search searchEmployeeDatabase(String searchTerm, String searchType) {
         Search search = new Search();
         search.setSearchTerm(searchTerm);
         search.setSearchType(searchType);
-        if (search.getSearchType() == "id") {
-            searchEmployeeDatabaseById();
+        if (search.getSearchType().equals("id")) {
+            searchEmployeeDatabaseById(search);
         }
-        if (search.getSearchType() == "lastName") {
-            searchEmployeeDatabaseByLastName();
+        if (search.getSearchType().equals("lastName")) {
+            searchEmployeeDatabaseByLastName(search);
         }
-        if (search.getSearchType() == "firstName") {
-            searchEmployeeDatabaseByFirstName();
+        if (search.getSearchType().equals("firstName")) {
+            searchEmployeeDatabaseByFirstName(search);
         }
-        return search.getResults();
+        return search;
     }
     /**
      * This method will search the Employee database by an
      * employee id
      */
-    private void searchEmployeeDatabaseById() {
-        Search search = new Search();
+    private void searchEmployeeDatabaseById(Search search) {
         String employeeId = search.getSearchTerm();
         Connection connection = connectToDatabase();
         Statement statement = null;
         ResultSet resultSet = null;
 
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
-
             connection = connectToDatabase();
 
             statement = connection.createStatement();
 
-            String queryString = "SELECT emp_id FROM employees "
-                    + "WHERE emp_id='" + employeeId + " '";
+            String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
+                    + "WHERE emp_id='" + employeeId + "';";
 
-
+            System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
 
             if (resultSet.next()) {
@@ -88,6 +85,7 @@ public class EmployeeDirectory {
 
             if (search.isFoundEmployeesBoolean()) {
                 Employee employee = new Employee();
+                System.out.println("EMPLOYEE ID:" + resultSet.getString("emp_id"));
                 employee.setEmployeeId(resultSet.getString("emp_id"));
                 employee.setFirstName(resultSet.getString("first_name"));
                 employee.setLastName(resultSet.getString("last_name"));
@@ -128,8 +126,7 @@ public class EmployeeDirectory {
      * This method will search the Employee database by an
      * employee last name
      */
-    private void searchEmployeeDatabaseByLastName() {
-        Search search = new Search();
+    private void searchEmployeeDatabaseByLastName(Search search) {
         String lastName = search.getSearchTerm();
         Connection connection = connectToDatabase();
         Statement statement = null;
@@ -142,14 +139,15 @@ public class EmployeeDirectory {
 
             statement = connection.createStatement();
 
-            String queryString = "SELECT last_name FROM employees "
-                    + "WHERE last_name='" + lastName + " '";
+            String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
+                    + "WHERE last_name='" + lastName + "'";
 
-
+            System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
 
             if (resultSet.next()) {
                 search.setFoundEmployeesBoolean(true);
+                System.out.println("RESULTS: " + resultSet.getString("first_name"));
             } else {
                 search.setFoundEmployeesBoolean(false);
             }
@@ -196,8 +194,7 @@ public class EmployeeDirectory {
      * This method will search the Employee database by an
      * employee first name
      */
-    private void searchEmployeeDatabaseByFirstName() {
-        Search search = new Search();
+    private void searchEmployeeDatabaseByFirstName(Search search) {
         String firstName = search.getSearchTerm();
         Connection connection = connectToDatabase();
         Statement statement = null;
@@ -210,10 +207,10 @@ public class EmployeeDirectory {
 
             statement = connection.createStatement();
 
-            String queryString = "SELECT first_name FROM employees "
-                    + "WHERE first_name='" + firstName + " '";
+            String queryString = "SELECT emp_id, first_name, last_name, ssn, dept, room, phone FROM employees "
+                    + "WHERE first_name='" + firstName + "'";
 
-
+            System.out.println("calling the database with " + queryString);
             resultSet = statement.executeQuery(queryString);
 
             if (resultSet.next()) {

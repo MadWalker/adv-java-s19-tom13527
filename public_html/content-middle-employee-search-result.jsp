@@ -30,11 +30,23 @@
             <div class="story">
                 <table>
                     <tr>
-                        <th>Results:</th>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>SSN</th>
+                        <th>Department</th>
+                        <th>Room Number</th>
+                        <th>Phone Number</th>
                     </tr>
                     <tr>
-                        <c:forEach var="listofResults" items="${employeeIdSearchResults}">
-                            <td>${listofResults}</td>
+                        <c:forEach var="listofResults" items="${employeeSearchResults}">
+                            <td>${listofResults.employeeId}</td>
+                            <td>${listofResults.firstName}</td>
+                            <td>${listofResults.lastName}</td>
+                            <td>${listofResults.socialSecurityNumber}</td>
+                            <td>${listofResults.department}</td>
+                            <td>${listofResults.roomNumber}</td>
+                            <td>${listofResults.phoneNumber}</td>
                         </c:forEach>
                     </tr>
                 </table>

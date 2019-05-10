@@ -31,14 +31,18 @@ public class EmployeeSearchResultsServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Get servlet context
         ServletContext context = getServletContext();
+        // Get the attribute for the EmployeeDirectory class
         EmployeeDirectory employeeDirectory = (EmployeeDirectory)context.getAttribute("employeeDirectoryStartup");
+        // Get both of the search terms from the search jsp form
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType");
-        employeeDirectory.searchEmployeeDatabase(searchTerm, searchType);
+        Search search = employeeDirectory.searchEmployeeDatabase(searchTerm, searchType);
+        System.out.println("FROM SERVLET:" + search.getResults());
+
         HttpSession session = request.getSession();
-        Search search = new Search();
-        session.setAttribute("employeeIdSearchResults", search.getResults());
+        session.setAttribute("employeeSearchResults", search.getResults());
         String url = "/employeeSearchResults.jsp";
         //Forward to jsp page
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

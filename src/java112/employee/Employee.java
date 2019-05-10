@@ -17,6 +17,7 @@ public class Employee {
     private String department;
     private String roomNumber;
     private String phoneNumber;
+
     /**
      * Gets employee id.
      *
@@ -31,7 +32,7 @@ public class Employee {
      * @param employeeId the employee id
      */
     public void setEmployeeId(String employeeId) {
-        employeeId = employeeId;
+        this.employeeId = employeeId;
     }
     /**
      * Gets first name.
@@ -132,13 +133,12 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", socialSecurityNumber='" + socialSecurityNumber + '\'' +
-                ", department='" + department + '\'' +
-                ", roomNumber='" + roomNumber + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", employeeId=" + employeeId +
-                '}';
+                "employeeId='" + employeeId + "\'" +
+                ", firstName='" + firstName + "\'" +
+                ", lastName='" + lastName + "\'" +
+                ", socialSecurityNumber='" + socialSecurityNumber + "\'" +
+                ", department='" + department + "\'" +
+                ", roomNumber='" + roomNumber + "\'" +
+                ", phoneNumber='" + phoneNumber + "\'}";
     }
 }
