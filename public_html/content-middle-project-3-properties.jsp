@@ -50,8 +50,24 @@
                             <td>${project3Properties.getProperty("instructor.name")}</td>
                         </tr>
                         <tr>
-                            <td>project.description: </td>
+                            <td>Project Description: </td>
                             <td>${project3Properties.getProperty("project.description")}</td>
+                        </tr>
+                        <tr>
+                            <td>Driver Class: </td>
+                            <td>${project4Properties.getProperty("driver")}</td>
+                        </tr>
+                        <tr>
+                            <td>Url: </td>
+                            <td>${project4Properties.getProperty("url")}</td>
+                        </tr>
+                        <tr>
+                            <td>Username: </td>
+                            <td>${project4Properties.getProperty("username")}</td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td>${project4Properties.getProperty("password")}</td>
                         </tr>
                     </table>
                     <a href="/java112">Home</a>
