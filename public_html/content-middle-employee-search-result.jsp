@@ -39,7 +39,7 @@
                         <th>Phone Number</th>
                     </tr>
                         <c:choose>
-                            <c:when test="${(foundBoolean) = true}">
+                            <c:when test="${(foundBoolean)}">
                                 <c:forEach var="listofResults" items="${(employeeSearchResults)}">
                                     <tr>
                                         <td>${listofResults.employeeId}</td>

@@ -42,6 +42,7 @@ public class EmployeeSearchResultsServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("employeeSearchResults", search.getResults());
+
         HttpSession session2 = request.getSession();
         System.out.println(search.isFoundEmployeesBoolean());
         session2.setAttribute("foundBoolean", search.isFoundEmployeesBoolean());

@@ -56,6 +56,7 @@
                             <a href="/java112/project3-properties">Project Properties Servlet</a>
                         </li>
                     </ol>
+                </div>
             <div class="post">
                 <h2 class="title">
                     Project 4 Files
@@ -68,9 +69,13 @@
                         <li>
                             <a href="/java112/searchEmployees">Search Employee</a>
                         </li>
+                        <li>
+                            <a href="/java112/project3-properties">Project Properties Servlet</a>
+                        </li>
                     </ol>
                     <blockquote>
                     </blockquote>
                 </div>
+            </div>
             </div>
         </div>
