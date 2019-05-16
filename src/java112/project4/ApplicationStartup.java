@@ -2,11 +2,17 @@ package java112.project4;
 
 import java112.employee.EmployeeDirectory;
 import java112.utilities.PropertiesLoader;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.util.*;
+
+/**
+ * This servlet will take care of some initializing for the project 4 program, like
+ * adding the employee directory and properties files to attribute
+ *
+ * @author Tom Good
+ */
 @WebServlet(
         name = "applicationStartup",
         urlPatterns = { "/project4-startup" },

@@ -88,7 +88,7 @@ public class Search {
      * This method will add the employee object to the list
      * of found employee objects
      *
-     * @param employee
+     * @param employee instances of found employees
      */
     public void addFoundEmployee(Employee employee) {
         results.add(employee);

@@ -16,10 +16,14 @@ public class EmployeeDirectory {
     Properties properties;
     /**
      * Constructor to connect to properties file
+     *
+     * @param properties the properties file object
      */
     public EmployeeDirectory(Properties properties) {}
     /**
-     * This method will establish a connection to the employee database
+     * This method will establish a connection to the employee database\
+     *
+     * @return Connection connection to database
      */
     private Connection connectToDatabase() {
         Connection connection = null;
@@ -40,7 +44,9 @@ public class EmployeeDirectory {
 
     /**
      * This method will be used to search the employee database
-     * @return search
+     * @return Search search results
+     * @param searchTerm the search term
+     * @param searchType the search type
      */
     public Search searchEmployeeDatabase(String searchTerm, String searchType) {
         Search search = new Search();
@@ -60,6 +66,8 @@ public class EmployeeDirectory {
     /**
      * This method will search the Employee database by an
      * employee id
+     *
+     * @param search instance of the search object
      */
     private void searchEmployeeDatabaseById(Search search) {
         String employeeId = search.getSearchTerm();
@@ -118,6 +126,8 @@ public class EmployeeDirectory {
     /**
      * This method will search the Employee database by an
      * employee last name
+     *
+     * @param search instance of the search object
      */
     private void searchEmployeeDatabaseByLastName(Search search) {
         String lastName = search.getSearchTerm();
@@ -181,6 +191,8 @@ public class EmployeeDirectory {
     /**
      * This method will search the Employee database by an
      * employee first name
+     *
+     * @param search instance of the search object
      */
     private void searchEmployeeDatabaseByFirstName(Search search) {
         String firstName = search.getSearchTerm();
